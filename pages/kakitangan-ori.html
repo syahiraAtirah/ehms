@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>E-Halaqah - Kakitangan</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+</head>
+
+<body>
+    <div class="dashboard-main-wrapper">
+        <!-- navbar -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="lamanutama.html">SISTEM PENGURUSAN E-HALAQAH</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">                       
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/avatar-1.jpg" id="img-user" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info"><h5 class="mb-0 text-white nav-user-name" id="currentuser"></h5></div>
+                                <a class="dropdown-item" href="#" id="changePw"><i class="fas fa-cog mr-2"></i>Tukar Kata Laluan</a>
+                                <a class="dropdown-item" href="#" id="logout"><i class="fas fa-power-off mr-2"></i>Log Keluar</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- left sidebar -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">Menu</li>
+                            <li class="nav-item "><a class="nav-link" href="lamanutama.html"><i class="fa fa-fw fa-rocket"></i>Laman Utama</a></li>
+                            <li class="nav-item"><a class="nav-link" href="profil.html"><i class="fa fa-fw fa-user-circle"></i>Profil</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Latihan</a>
+                                <div id="submenu-3" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item"><a class="nav-link" href="koleksi.-latihan.html">Koleksi Latihan</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="perkembangan-latihan.html">Perkembangan Latihan</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="urus-latihan.html">Urus Latihan</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-wpforms"></i>Penilaian</a>
+                                <div id="submenu-4" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item"><a class="nav-link" href="koleksi-penilaian.html">Koleksi Penilaian</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="perkembangan-penilaian.html">Perkembangan Penilaian</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="urus-penilaian.html">Urus Penilaian</a></li>                       
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Halaqah</a>
+                                <div id="submenu-5" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item"><a class="nav-link" href="kumpulan-halaqah.html">Kumpulan Halaqah</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="urus-halaqah.html">Urus Halaqah</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="berita.html" ><i class="fas fa-fw fa-file"></i>Berita</a></li>
+                            <li class="nav-item"><a class="nav-link" href="yuran.html" ><i class="fas fa-fw fa-inbox"></i>Yuran <span class="badge badge-secondary">New</span></a></li>
+                            <li class="nav-item"><a class="nav-link" href="pelajar.html" ><i class="fas fa-fw fa-columns"></i>Pelajar</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="kakitangan.html" ><i class="fas fa-fw fa-map-marker-alt"></i>Kakitangan</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- wrapper  -->
+        <div class="dashboard-wrapper">
+            <div class="container-fluid dashboard-content">
+                <!-- pageheader -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                            <h2 class="pageheader-title">Kakitangan</h2>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">                    
+                    <!-- basic table  -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Rekod Kakitangan</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="instructor-list" class="table table-striped table-bordered first">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama</th>
+                                                <th>Emel</th>
+                                                <th>No. Tel</th>
+                                                <th>Peranan</th>
+                                                <th>Tindakan</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <br><br>
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#modal-signup">Daftar Kakitangan Baru</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end basic table  -->
+
+                    <!-- register instructor modal -->
+                    <div class="modal-wrapper modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Daftar Kakitangan Baru</h5>
+                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
+                                        <form id="signup-form">
+                                            <div class="form-group">
+                                                <input id="signup-img" type="file" data-parsley-trigger="change"  class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-email" type="email" data-parsley-trigger="change" placeholder="Emel" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-password" type="password" data-parsley-trigger="change" placeholder="Kata laluan" autocomplete="off" class="form-control" required> 
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-fullname" type="text" data-parsley-trigger="change" placeholder="Nama penuh" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control" id="signup-role" required>
+                                                    <option disabled hidden selected>Peranan</option>
+                                                    <option>Admin</option>
+                                                    <option>Lead instructor</option>
+                                                    <option>Instructor</option>
+                                                  </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-phone" type="text" data-parsley-trigger="change" placeholder="Nombor telefon" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-addr1" type="text" data-parsley-trigger="change" placeholder="Alamat 1" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-addr2" type="text" data-parsley-trigger="change" placeholder="Alamat 2" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-postcode" type="text" data-parsley-trigger="change" placeholder="Poskod" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-city" type="text" data-parsley-trigger="change" placeholder="Bandar" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control" id="signup-state" required>
+                                                    <option disabled hidden selected>Negeri</option>
+                                                    <option>Johor</option>
+                                                    <option>Kedah</option>
+                                                    <option>Kelantan</option>
+                                                    <option>Kuala Lumpur</option>
+                                                    <option>Melaka</option>
+                                                    <option>Negeri Sembilan</option>
+                                                    <option>Pahang</option>
+                                                    <option>Perak</option>
+                                                    <option>Perlis</option>
+                                                    <option>Pulau Pinang</option>
+                                                    <option>Sabah</option>
+                                                    <option>Sarawak</option>
+                                                    <option>Selangor</option>
+                                                    <option>Terengganu</option>
+                                                  </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="signup-datejoined">Tarikh sertai</label>
+                                                <input id="signup-datejoined" type="date" data-parsley-trigger="change" autocomplete="off" class="form-control" required>
+                                            </div> 
+                                            <br>
+                                            <button id="signupBtn" class="btn btn-primary">Daftar</button>
+                                            <button class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        </form>                                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- modal to delete user -->
+                    <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Buang Rekod Kakitangan</h5>
+                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                                </div>
+                                <div class="modal-body"><p id="body-delete-modal"></p></div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-danger btn-delete2" >Ya</button>
+                                    <button class="btn btn-primary" data-dismiss="modal">Tidak</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- modal to view profile and edit -->
+                    <div class="view-profile modal fade" id="viewUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Profil Kakitangan</h5>
+                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
+                                        <form class="form" data-parsley-validate=""> 
+                                            <div class="card-body">
+                                                <a id="view-imgLink" target="_blank"><img src="" onerror="if (this.src != '../assets/images/user-1.jpg') this.src = '../assets/images/user-1.jpg';" class="rounded-circle user-avatar-xxl" name="imageName" id="view-img"></a>
+                                            </div>
+                                            <div class="card-body">
+                                                <!-- make a small icon here, when click can edit the pic -->
+                                                <input id="edit-img" type="file" data-parsley-trigger="change" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="email" type="email" data-parsley-trigger="change" placeholder="Emel" autocomplete="off" class="form-control" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="fullname" type="text" data-parsley-trigger="change" placeholder="Nama penuh" autocomplete="off" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control" name="role">
+                                                    <option disabled hidden selected>Peranan</option>
+                                                    <option>Admin</option>
+                                                    <option>Lead instructor</option>
+                                                    <option>Instructor</option>
+                                                  </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="adminOf" type="text" data-parsley-trigger="change" placeholder="" autocomplete="off" class="form-control" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="phone" type="text" data-parsley-trigger="change" placeholder="Nombor telefon" autocomplete="off" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="addr1" type="text" data-parsley-trigger="change" placeholder="Alamat 1" autocomplete="off" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="addr2" type="text" data-parsley-trigger="change" placeholder="Alamat 2" autocomplete="off" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="postcode" type="text" data-parsley-trigger="change" placeholder="Poskod" autocomplete="off" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="city" type="text" data-parsley-trigger="change" placeholder="Bandar" autocomplete="off" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control" name="state">
+                                                    <option disabled hidden selected>Negeri</option>
+                                                    <option>Johor</option>
+                                                    <option>Kedah</option>
+                                                    <option>Kelantan</option>
+                                                    <option>Kuala Lumpur</option>
+                                                    <option>Melaka</option>
+                                                    <option>Negeri Sembilan</option>
+                                                    <option>Pahang</option>
+                                                    <option>Perak</option>
+                                                    <option>Perlis</option>
+                                                    <option>Pulau Pinang</option>
+                                                    <option>Sabah</option>
+                                                    <option>Sarawak</option>
+                                                    <option>Selangor</option>
+                                                    <option>Terengganu</option>
+                                                  </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input name="datejoined" type="date" data-parsley-trigger="change" placeholder="Tarikh sertai" autocomplete="off" class="form-control" disabled>
+                                            </div>
+                                            <br>
+                                            <button class="btn btn-primary" >Sunting</button>
+                                            <button class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        </form>                                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer -->
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end footer -->
+        </div>
+        <!-- end main wrapper -->
+    </div>
+    <!-- end main wrapper -->
+
+    <!-- Optional JavaScript -->
+    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="../assets/libs/js/main-js.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-storage.js"></script>
+
+    <script src="../pages/scripts/init.js"></script>
+    <script src="../pages/scripts/auth.js"></script>
+    <script src="../pages/scripts/kakitangan-ori.js"></script>
+</body>
+</html>

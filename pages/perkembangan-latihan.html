@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>E-Halaqah - Perkembangan Latihan</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+</head>
+
+<body>
+    <div class="dashboard-main-wrapper">
+        <!-- navbar -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="lamanutama.html">SISTEM PENGURUSAN E-HALAQAH</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">                       
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/avatar-1.jpg" id="img-user" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info"><h5 class="mb-0 text-white nav-user-name" id="currentuser"></h5></div>
+                                <a class="dropdown-item" href="#" id="changePw"><i class="fas fa-cog mr-2"></i>Tukar Kata Laluan</a>
+                                <a class="dropdown-item" href="#" id="logout"><i class="fas fa-power-off mr-2"></i>Log Keluar</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- left sidebar -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">Menu</li>
+                            <li class="nav-item "><a class="nav-link" href="lamanutama.html"><i class="fa fa-fw fa-rocket"></i>Laman Utama</a></li>
+                            <li class="nav-item"><a class="nav-link" href="profil.html"><i class="fa fa-fw fa-user-circle"></i>Profil</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Latihan</a>
+                                <div id="submenu-3" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item"><a class="nav-link" href="koleksi.-latihan.html">Koleksi Latihan</a></li>
+                                        <li class="nav-item"><a class="nav-link active" href="perkembangan-latihan.html">Perkembangan Latihan</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="urus-latihan.html">Urus Latihan</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-wpforms"></i>Penilaian</a>
+                                <div id="submenu-4" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item"><a class="nav-link" href="koleksi-penilaian.html">Koleksi Penilaian</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="perkembangan-penilaian.html">Perkembangan Penilaian</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="urus-penilaian.html">Urus Penilaian</a></li>                       
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Halaqah</a>
+                                <div id="submenu-5" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item"><a class="nav-link" href="kumpulan-halaqah.html">Kumpulan Halaqah</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="urus-halaqah.html">Urus Halaqah</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="berita.html" ><i class="fas fa-fw fa-file"></i>Berita</a></li>
+                            <li class="nav-item"><a class="nav-link" href="yuran.html" ><i class="fas fa-fw fa-inbox"></i>Yuran <span class="badge badge-secondary">New</span></a></li>
+                            <li class="nav-item"><a class="nav-link" href="pelajar.html" ><i class="fas fa-fw fa-columns"></i>Pelajar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="kakitangan.html" ><i class="fas fa-fw fa-map-marker-alt"></i>Kakitangan</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- wrapper  -->
+        <div class="dashboard-wrapper">
+            <div class="container-fluid dashboard-content">
+                <!-- pageheader -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                            <h2 class="pageheader-title">Perkembangan Latihan</h2>
+                            <div class="page-breadcrumb">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Latihan</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Perkembangan Latihan</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                            <h1> Nanti add search by halaqah name, tajuk latihan </h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- end pageheader -->
+                <div class="row">
+                    <!-- column for undone -->
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Pelajar yang belum membuat latihan</h5>
+                            <div class="card-body alert-danger">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <medium class="mb-1">Latihan 3</medium>
+                                            <medium class="text-secondary">0/20</medium>
+                                        </div>
+                                        <h4 class="text-primary font-margin">Wan Maimunah bin Ibrahim</h4>
+                                        <small class="text-muted">Kumpulan Masyeeta</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <medium class="mb-1">Latihan 4</medium>
+                                            <medium class="text-secondary">0/20</medium>
+                                        </div>
+                                        <h4 class="text-primary font-margin">Wan Maimunah bin Ibrahim</h4>
+                                        <small class="text-muted">Kumpulan Masyeeta</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <medium class="mb-1">Latihan 4</medium>
+                                            <medium class="text-secondary">0/20</medium>
+                                        </div>
+                                        <h4 class="text-primary font-margin">Zubaidah binit Hasan</h4>
+                                        <small class="text-muted">Kumpulan Sumayya</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- column for done -->
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Pelajar yang telah membuat latihan</h5>
+                            <div class="card-body alert-primary">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <medium class="mb-1">Latihan 1</medium>
+                                            <medium class="text-secondary">16/20</medium>
+                                        </div>
+                                        <h4 class="text-primary font-margin">Wan Maimunah bin Ibrahim</h4>
+                                        <small class="text-muted">Kumpulan Masyeeta</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <medium class="mb-1">Latihan 2</medium>
+                                            <medium class="text-secondary">15/20</medium>
+                                        </div>
+                                        <h4 class="text-primary font-margin">Wan Maimunah bin Ibrahim</h4>
+                                        <small class="text-muted">Kumpulan Masyeeta</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <medium class="mb-1">Latihan 1</medium>
+                                            <medium class="text-secondary">13/20</medium>
+                                        </div>
+                                        <h4 class="text-primary font-margin">Zubaidah binit Hasan</h4>
+                                        <small class="text-muted">Kumpulan Masyeeta</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <medium class="mb-1">Latihan 2</medium>
+                                            <medium class="text-secondary">17/20</medium>
+                                        </div>
+                                        <h4 class="text-primary font-margin">Zubaidah binit Hasan</h4>
+                                        <small class="text-muted">Kumpulan Masyeeta</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <medium class="mb-1">Latihan 3</medium>
+                                            <medium class="text-secondary">18/20</medium>
+                                        </div>
+                                        <h4 class="text-primary font-margin">Zubaidah binit Hasan</h4>
+                                        <small class="text-muted">Kumpulan Masyeeta</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end footer -->
+        </div>
+        <!-- end main wrapper -->
+    </div>
+    <!-- end main wrapper -->
+
+    <!-- Optional JavaScript -->
+    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="../assets/libs/js/main-js.js"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+    
+        <script src="../pages/scripts/init.js"></script>
+        <script src="../pages/scripts/auth.js"></script>
+</body>
+ 
+</html>
