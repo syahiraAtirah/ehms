@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>E-Halaqah - Urus Latihan</title>
+    <title>E-Halaqah - Cipta Latihan Baru </title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <link rel="stylesheet" href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
 </head>
-<!-- NOW IM IN UI-PRACTICE BRANCH -->
+
 <body>
     <div class="dashboard-main-wrapper">
         <!-- navbar -->
@@ -56,7 +56,7 @@
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Latihan</a>
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
-                                        <li class="nav-item"><a class="nav-link" href="koleksi.-latihan.html">Koleksi Latihan</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="koleksi-latihan.html">Koleksi Latihan</a></li>
                                         <li class="nav-item"><a class="nav-link" href="perkembangan-latihan.html">Perkembangan Latihan</a></li>
                                         <li class="nav-item"><a class="nav-link active" href="urus-latihan.html">Urus Latihan</a></li>
                                     </ul>
@@ -94,57 +94,31 @@
         <!-- wrapper  -->
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
-                <!-- pageheader -->
+
+                <!-- view practice -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="page-header">
-                            <h2 class="pageheader-title">Urus Latihan</h2>
-                            <div class="page-breadcrumb">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Latihan</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Urus Latihan</li>
-                                    </ol>
-                                </nav>
+                        
+                        <div class="card view-practice">
+                            <div class="card-body">
+                                <form class="form">
+                                    <div class="form-group">
+                                        <label for="pc-title" class="col-form-label">Tajuk Latihan</label>
+                                        <input id="pc-title" name="title" type="text" class="form-control" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pc-desc">Penerangan</label>
+                                        <textarea class="form-control" name="desc" id="pc-desc" rows="3" disabled></textarea>
+                                    </div>
+                                    <div id="viewQNA"></div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- end pageheader -->
-
-                <!-- div for button to create new practice -->
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <a href="latihan-baru.html" target="_blank" class="btn btn-info">Cipta Latihan Baru</a>
-                        <br><br>
-                    </div>
-                </div>
-
-                <!-- div for display created practices -->
-                <div class="row" id="practice-list">
-                    <!-- print list of created halaqah -->
-                    
-                    <!-- delete modal -->
-                    <div class="modal fade" id="modal-deletepc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Buang Latihan</h5>
-                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
-                                </div>
-                                <div class="modal-body"><p id="body-delete-modal"></p></div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-danger btn-delete2" >Ya</button>
-                                    <button class="btn btn-primary" data-dismiss="modal">Tidak</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
 
             </div>
+
             <!-- footer -->
             <div class="footer">
                 <div class="container-fluid">
@@ -158,7 +132,7 @@
                                 <a href="javascript: void(0);">Support</a>
                                 <a href="javascript: void(0);">Contact Us</a>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -174,15 +148,14 @@
     <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <script src="../assets/libs/js/main-js.js"></script>
 
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
-    
-        <script src="../pages/scripts/init.js"></script>
-        <script src="../pages/scripts/auth.js"></script>
-        <script src="../pages/scripts/urus-latihan.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
 
+    <script src="../pages/scripts/init.js"></script>
+    <script src="../pages/scripts/auth.js"></script>
+    <script src="../pages/scripts/lihat-latihan.js"></script>
 </body>
  
 </html>
