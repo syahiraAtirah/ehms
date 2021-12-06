@@ -16,7 +16,7 @@ const renderPractice = doc => {
             </div>
             <div class="card-body">
                 <p class="card-text">${doc.data().quizDesc}</p>
-                <p class="card-text"><small class="text-muted">${date}</small></p>
+                <p class="card-text"><small class="text-muted">Tarikh dikemaskini: ${date}</small></p>
             </div>
         </div>
     </div>
@@ -30,12 +30,26 @@ const renderPractice = doc => {
     btnDelete1.addEventListener('click', () => {
         delPc.innerHTML = "Adakah anda pasti mahu membuang " + doc.data().quizName + " daripada database secara kekal?";
         btnDelete2.addEventListener('click', () => {
-            db.collection('Practice').doc(`${doc.data().quizID}`).delete().then(() => {
-                console.log('Document succesfully deleted from FIRESTORE!');
-                // setTimeout(function(){
-                //     document.location.reload();
-                // }, 1000);
-            }).catch(err => {
+            db.collection('Practice').doc(doc.data().quizID).collection('QnA').get().then((querySnapshot) => {
+                querySnapshot.forEach((docu) => {
+
+                    db.collection('Practice').doc(doc.data().quizID).collection('QnA').doc(docu.id).delete().then(() => {
+                        console.log('------------ Document succesfully deleted from FIRESTORE! : ' + docu.id + " in " + doc.data().quizID + "--------------------");
+                        // setTimeout(function(){
+                        //     document.location.reload();
+                        // }, 1000);
+                    })
+                });
+            })
+            .then(() => {
+                db.collection('Practice').doc(doc.data().quizID).delete().then(() => {
+                    console.log('------------ Document succesfully deleted from FIRESTORE! : ' + doc.data().quizID );
+                    // setTimeout(function(){
+                    //     document.location.reload();
+                    // }, 1000);
+                })
+            })  
+            .catch(err => {
                 console.log('Error removing document', err);
             });
         })

@@ -116,50 +116,6 @@ function validate() {
 
 }
 
-// function createPractice(e) {
-
-//     e.preventDefault();
-//     validate();
-//     console.log('KALAU ADA KOSONG TAK BOLE LALU SINI');
-
-//     db.collection("Practice").add({
-//         // CREATE TITLE AND DESC
-//         quizName: document.querySelector('#pc-title').value,
-//         quizDesc: document.querySelector('#pc-desc').value,
-//     })
-//     .then((docRef) => {
-//         db.collection("Practice").doc(docRef.id).update({
-//             // CREATE ID AND DATE
-//             quizID: docRef.id,
-//             date: firebase.firestore.FieldValue.serverTimestamp(),
-//         })
-//         .then(() => {
-//             // CREATE QNA
-//             for (let i = 0; i < qnaID.length ; i++) {
-//                 db.collection("Practice").doc(docRef.id).collection("QnA").add({
-//                     question: document.querySelector('#ques' + qnaID[i]).value, 
-//                     opt1: document.querySelector('#opt1' + qnaID[i]).value,
-//                     opt2: document.querySelector('#opt2' + qnaID[i]).value,
-//                     opt3: document.querySelector('#opt3' + qnaID[i]).value,
-//                     opt4: document.querySelector('#opt4' + qnaID[i]).value,
-//                 })
-//                 .then(() => {
-//                     console.log('berjaya tambah soalan');
-//                     alert('Latihan telah berjaya ditambah');
-//                     window.location.href = "urus-latihan.html";
-//                 })
-//                 .catch((error) => {
-//                     console.error("Error adding document: ", error);
-//                 });
-//             }
-//         })
-//     })
-//     .catch((error) => {
-//         console.error("Error adding document: ", error);
-//     });
-
-// }
-
 function createPractice(e) {
 
     e.preventDefault();
@@ -207,8 +163,8 @@ function createPractice(e) {
                 })
                 // SUCCESS
                 console.log('PRACTICE CREATED SUCCESSFULLY');
-                // alert('Alhamdulillah. Latihan telah berjaya dicipta.');
-                window.location.href = "urus-latihan.html";
+                alert('Alhamdulillah. Latihan telah berjaya dicipta.');
+                setTimeout(function(){ window.location.href = "urus-latihan.html"; }, 4000); 
             }
         })
     })
