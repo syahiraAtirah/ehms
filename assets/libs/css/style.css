@@ -1471,7 +1471,7 @@ Top Header
 .nav-user-name {}
 
 .nav-user-info {
-    background: -webkit-radial-gradient(top left, #91E2FF, #B44FFC);
+    background: -webkit-radial-gradient(top left, #91E2FF, #B44FFC); 
     line-height: 1.4;
     padding: 12px;
     color: #fff;
@@ -2695,21 +2695,21 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 
 .btn-secondary {
     color: #fff;
-    background-color: #ff407b;
-    border-color: #ff407b;
+    background-color: #B44FFC;
+    border-color: #B44FFC;
 }
 
 .btn-secondary:hover {
     color: #fff;
-    background-color: #f0346e;
-    border-color: #f0346e;
+    background-color: #ce89ff;
+    border-color: #ce89ff;
 }
 
 .btn-secondary.focus,
 .btn-secondary:focus {
     color: #fff;
-    background-color: #f0346e;
-    border-color: #f0346e;
+    background-color: #B44FFC;
+    border-color: #B44FFC;
     box-shadow: 0 0 0 1px rgb(222, 17, 80);
 }
 
@@ -2717,8 +2717,8 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 .btn-secondary:not(:disabled):not(.disabled):active,
 .show>.btn-secondary.dropdown-toggle {
     color: #fff;
-    background-color: #f0346e;
-    border-color: #f0346e;
+    background-color: #B44FFC;
+    border-color: #B44FFC;
 }
 
 

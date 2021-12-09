@@ -73,9 +73,9 @@ function removeMember(removeName, removeGp) {
         `;
         newStudent.insertAdjacentHTML('beforeend', student);
 
-        setTimeout(function(){
-            document.location.reload();
-        }, 300);
+        // setTimeout(function(){
+        //     document.location.reload();
+        // }, 300);
     })
 }
 
@@ -98,12 +98,18 @@ const newStudent = document.querySelector('#new-student');
 db.collection("TadabburGroup").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         const members = doc.data().members;
+        // console.log('doc id: ' + doc.id);
+        // console.log('members length: ' + members.length);
         if(members.length > 0) {
             for(let i = 0; i < members.length; i++) {
                 currentMembers.push(doc.data().members[i]);
+                // console.log('currentMembers[]: ' + currentMembers);
             }
         }
     });
+    if(currentMembers.length == 0) {
+        currentMembers.push("Tiada");
+    }
     db.collection("students").where("fullname", "not-in", currentMembers).get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const student = `
@@ -124,8 +130,12 @@ db.collection("TadabburGroup").get().then((querySnapshot) => {
 function addMembers() {
     db.collection("students").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            const cb = document.getElementById(doc.data().fullname);
-                if(cb.checked == true) {   
+            console.log(doc.id);
+            const name = doc.data().fullname;
+            console.log(name);
+            const cb = document.getElementById(name);
+                if(cb.checked = true) {   
+                    console.log(cb);
                     const addStud = db.collection("TadabburGroup").doc(gpID);
                     addStud.get().then((doc) => {
                         const addGroup = doc.data().groupName;

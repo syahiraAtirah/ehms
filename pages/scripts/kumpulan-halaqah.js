@@ -1,23 +1,3 @@
-// create halaqah group
-const creategpForm = document.querySelector('#creategp-form');
-const instructor = document.querySelector('#gp-admin');
-document.querySelector('#creategp').addEventListener('click', createGp);
-function createGp(e) {
-    e.preventDefault();
-
-    const gpAdmin = instructor.options[instructor.selectedIndex].text;
-
-    db.collection("TadabburGroup").add({
-        groupName: document.querySelector('#gp-name').value,
-        admin: gpAdmin,
-        adminID: instructor.value,
-        members: [],
-    }) 
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
-}
-
 const halaqahList = document.querySelector('#halaqah-list');
 const renderHalaqah = doc => {
     const div = `
@@ -57,25 +37,6 @@ const renderHalaqah = doc => {
     </div>
     `;
     halaqahList.insertAdjacentHTML('beforeend', div);
-
-    // delete halaqah
-    const delGp = document.querySelector('#body-delete-modal');
-    const btnDelete1 = document.querySelector(`[data-id='${doc.id}'] .btn-delete1`);
-    const btnDelete2 = document.querySelector('.btn-delete2');
-    btnDelete1.addEventListener('click', () => {
-        delGp.innerHTML = "Adakah anda pasti mahu membuang rekod " + doc.data().groupName + " daripada database secara kekal?";
-        btnDelete2.addEventListener('click', () => {
-            db.collection('TadabburGroup').doc(`${doc.id}`).delete().then(() => {
-                console.log('Document succesfully deleted from FIRESTORE!');
-
-                // setTimeout(function(){
-                //     document.location.reload();
-                // }, 1000);
-            }).catch(err => {
-                console.log('Error removing document', err);
-            });
-        })
-    })
 };
 
 
@@ -93,27 +54,3 @@ db.collection('TadabburGroup').onSnapshot(snapshot => {
         }
     })
 });
-
-const allInstructor = document.querySelector('#gp-admin');
-const renderInstructor = doc => {
-    const opt = `
-        <option value="${doc.id}">${doc.data().fullname}</option>
-    `;
-    allInstructor.insertAdjacentHTML('beforeend', opt);
-}
-
-// realtime listener
-db.collection('instructors').onSnapshot(snapshot => {
-    snapshot.docChanges().forEach(change => {
-        if(change.type === 'added') {
-            renderInstructor(change.doc);
-            console.log('ADDED');
-        }
-        if(change.type === 'removed') {
-            let tr = document.querySelector(`[data-id='${change.doc.id}']`);
-            allInstructor.removeChild(tr);
-            console.log('REMOVED');
-        }
-    })
-});
-
