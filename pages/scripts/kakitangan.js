@@ -12,7 +12,7 @@ const renderUser = doc => {
             <td>${doc.data().phone}</td>
             <td>${doc.data().role}</td>
             <td>
-                <a href="profil-lain.html?${doc.id}" target="_blank" class="btn btn-primary btn-xs">Profil</a>
+                <a href="profil-lain-kakitangan.html?${doc.id}" target="_blank" class="btn btn-secondary btn-xs">Profil</a>
                 <button class="btn btn-danger btn-xs btn-delete1" data-toggle="modal" data-target="#deleteUser">Buang</button>
             </td>
         </tr>

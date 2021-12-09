@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>E-Halaqah - Edit Profil</title>
+    <title>E-Halaqah - Profil</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -51,7 +51,7 @@
                         <ul class="navbar-nav flex-column">
                             <li class="nav-divider">Menu</li>
                             <li class="nav-item "><a class="nav-link" href="lamanutama.html"><i class="fa fa-fw fa-rocket"></i>Laman Utama</a></li>
-                            <li class="nav-item"><a class="nav-link" href="profil.html"><i class="fa fa-fw fa-user-circle"></i>Profil</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="profil.html"><i class="fa fa-fw fa-user-circle"></i>Profil</a></li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Latihan</a>
                                 <div id="submenu-3" class="collapse submenu" style="">
@@ -97,9 +97,7 @@
                 <!-- Profil header -->
                 <div class="row">
                     <div class="col-xl-10">
-                        <!-- ============================================================== -->
                         <!-- pageheader  -->
-                        <!-- ============================================================== -->
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header">
@@ -107,13 +105,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- ============================================================== -->
                         <!-- end pageheader  -->
-                        <!-- ============================================================== -->
                     </div>
-                    <!-- ============================================================== -->
                     <!-- media user -->
-                    <!-- ============================================================== -->
                 </div>
                 <!-- end profile header -->
 
@@ -123,76 +117,87 @@
                     <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card card-fluid">
                             <div class="card-body text-center">
-                                <a href="#" class="user-avatar user-avatar-xl my-3">
-                                  <img src="../assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xl">
-                                      </a>
-                                <h3 class="card-title mb-2 text-truncate">
-                                    <a href="#">Siti Khadeeja</a>
-                                    </h3>
-                                <h6 class="card-subtitle text-primary mb-3"> Ustazah @ iPaQ </h6>
+                                <a class="user-avatar user-avatar-xxxl my-3" id="profile-link" target="_blank">
+                                    <img src="../assets/images/avatar-1.jpg" id="profile-img" alt="User Avatar" class="rounded-circle user-avatar-xxxl">
+                                </a>
                             </div>
                         </div>
                     </div>
                    
                     <!-- column for form -->
                     <div class="col-xl-8 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="card">
+                        <div class="card profile">
                             <h5 class="card-header">Maklumat Pengguna</h5>
                             <div class="card-body">
-                                <form class="card-content">
+                                <form class="card-content form">
                                     <div class="form-group">
-                                        <label for="nama" class="col-form-label">Nama</label>
-                                        <input id="inputName" value="Siti Khadeeja" type="text" class="form-control">
+                                        <label class="col-form-label">Emel</label>
+                                        <input name="email" type="email" class="form-control" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <div class="form-group">
-                                            <label for="nombortelefon" class="col-form-label">Jantina</label>
-                                            <select class="form-control">
-                                                <option>Perempuan</option>
-                                                <option>Lelaki</option>
-                                            </select>
-                                        </div>
+                                        <label class="col-form-label">Nama Penuh</label>
+                                        <input name="fullname" type="text" class="form-control" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="emel" class="col-form-label">Emel</label>
-                                        <input id="inputName" value="sitikhadeeja@gmail.com" type="text" class="form-control" >
+                                        <label class="col-form-label">Peranan</label>
+                                        <select class="form-control" name="role">
+                                            <option disabled hidden selected>Peranan</option>
+                                            <option>Admin</option>
+                                            <option>Lead instructor</option>
+                                            <option>Instructor</option>
+                                          </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="nombortelefon" class="col-form-label">Nombor Telefon</label>
-                                        <input id="inputName" value="012-34567890" type="text" class="form-control" >
+                                        <label class="col-form-label">Nombor Telefon</label>
+                                        <input name="phone" type="text" class="form-control">
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label class="col-form-label">Guru Halaqah</label>
+                                        <input name="adminOf" type="text" class="form-control" disabled>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <label class="col-form-label">Alamat 1</label>
+                                        <input name="addr1" type="text" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <div class="form-group">
-                                            <label for="nombortelefon" class="col-form-label">Jawatan</label>
-                                            <select class="form-control">
-                                                <option>Pengetua</option>
-                                                <option>Pentadbir</option>
-                                                <option>Ustaz</option>
-                                                <option>Ustazah</option>
-                                            </select>
-                                        </div>
+                                        <label class="col-form-label">Alamat 2</label>
+                                        <input name="addr2" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Poskod</label>
+                                        <input name="postcode" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Bandar</label>
+                                        <input name="city" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Negeri</label>
+                                        <select class="form-control" name="state">
+                                            <option disabled hidden selected>Negeri</option>
+                                            <option>Johor</option>
+                                            <option>Kedah</option>
+                                            <option>Kelantan</option>
+                                            <option>Kuala Lumpur</option>
+                                            <option>Melaka</option>
+                                            <option>Negeri Sembilan</option>
+                                            <option>Pahang</option>
+                                            <option>Perak</option>
+                                            <option>Perlis</option>
+                                            <option>Pulau Pinang</option>
+                                            <option>Sabah</option>
+                                            <option>Sarawak</option>
+                                            <option>Selangor</option>
+                                            <option>Terengganu</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Tarikh menyertai</label>
+                                        <input name="datejoined" type="date" class="form-control" disabled>
                                     </div>
                                     <div class="card-body border-top">
-                                        <!-- Button trigger modal -->
-                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Simpan </a>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Simpan</h5>
-                                                        <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Adakah anda pasti mahu menyimpan penyuntingan yang dibuat? </p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <a href="#" class="btn btn-secondary" data-dismiss="modal">Tidak</a>
-                                                        <a href="profil.html" class="btn btn-primary">Ya</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <!-- <a href="profil-edit.html" class="btn btn-primary">Sunting Profil</a> -->
+                                        <button id="update" class="btn btn-primary">Sunting Profil</button>
                                     </div>
                                 </form>
                             </div>
@@ -225,23 +230,22 @@
     </div>
     <!-- end main wrapper -->
     
-    
-    <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <script src="../assets/libs/js/main-js.js"></script>
     <script src="../assets/vendor/inputmask/js/jquery.inputmask.bundle.js"></script>
-    
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
 
     <script src="../pages/scripts/init.js"></script>
-    <script src="../pages/scripts/kakitangan.js"></script>
     <script src="../pages/scripts/auth.js"></script>
+    <script src="../pages/scripts/profil-lain-kakitangan.js"></script>
+
 </body>
  
 </html>

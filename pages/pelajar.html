@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 
- 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -98,18 +97,26 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
                             <h2 class="pageheader-title">Pelajar</h2>
+                            <div class="page-breadcrumb">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb"></ol>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- end pageheader -->
+
                 <div class="row">
                     <!-- basic table  -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <h5 class="card-header">Rekod Pelajar</h5>
                             <div class="card-body">
+                                <button class="btn btn-info" data-toggle="modal" data-target="#modal-signup">Daftar Pelajar Baru</button>
+                                <br><br>
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered first table-users">
+                                    <table id="instructor-list" class="table table-striped table-bordered first">
                                         <thead>
                                             <tr>
                                                 <th>Nama</th>
@@ -119,85 +126,75 @@
                                             </tr>
                                         </thead>
                                     </table>
-                                    <br>
-                                    <br>
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#createUser">Daftar Pelajar Baru</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- end basic table  -->
 
-                    <!-- modal to register user (SIGN UP) -->
-                    <div class="create-modal modal-wrapper modal fade" id="createUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- register instructor modal -->
+                    <div class="modal-wrapper modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Daftar Pelajar Baru</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Daftar Kakitangan Baru</h5>
                                     <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
                                 </div>
                                 <div class="modal-body">
                                     <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
-                                        <form class="form" data-parsley-validate="" onsubmit="signUp(event)">
+                                        <form id="signup-form">
                                             <div class="form-group">
-                                                <label for="email">Emel</label>
-                                                <input id="createEmail" type="email" name="email" data-parsley-trigger="change" placeholder="Emel" autocomplete="off" class="form-control">
+                                                <input id="signup-img" type="file" data-parsley-trigger="change"  class="form-control" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="password">Kata laluan</label>
-                                                <input id="createPassword" type="password" name="password" data-parsley-trigger="change" placeholder="Kata laluan" autocomplete="off" class="form-control">
+                                                <input id="signup-email" type="email" data-parsley-trigger="change" placeholder="Emel" autocomplete="off" class="form-control" required>
                                             </div>
+                                            <div class="form-group">
+                                                <input id="signup-password" type="password" data-parsley-trigger="change" placeholder="Kata laluan" autocomplete="off" class="form-control" required> 
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-fullname" type="text" data-parsley-trigger="change" placeholder="Nama penuh" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-phone" type="text" data-parsley-trigger="change" placeholder="Nombor telefon" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-addr1" type="text" data-parsley-trigger="change" placeholder="Alamat 1" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-addr2" type="text" data-parsley-trigger="change" placeholder="Alamat 2" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-postcode" type="text" data-parsley-trigger="change" placeholder="Poskod" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-city" type="text" data-parsley-trigger="change" placeholder="Bandar" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control" id="signup-state" required>
+                                                    <option disabled hidden selected>Negeri</option>
+                                                    <option>Johor</option>
+                                                    <option>Kedah</option>
+                                                    <option>Kelantan</option>
+                                                    <option>Kuala Lumpur</option>
+                                                    <option>Melaka</option>
+                                                    <option>Negeri Sembilan</option>
+                                                    <option>Pahang</option>
+                                                    <option>Perak</option>
+                                                    <option>Perlis</option>
+                                                    <option>Pulau Pinang</option>
+                                                    <option>Sabah</option>
+                                                    <option>Sarawak</option>
+                                                    <option>Selangor</option>
+                                                    <option>Terengganu</option>
+                                                  </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="signup-datejoined">Tarikh sertai</label>
+                                                <input id="signup-datejoined" type="date" data-parsley-trigger="change" autocomplete="off" class="form-control" required>
+                                            </div> 
                                             <br>
-                                            <button class="btn btn-primary">Daftar</button>
-                                            <button class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                        </form>                                  
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- modal to edit user -->
-                    <div class="edit-modal modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Sunting Rekod Pelajar</h5>
-                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
-                                        <form class="form" data-parsley-validate="">
-                                            <div class="form-group">
-                                                <label for="name">Nama</label>
-                                                <input type="text" name="name" data-parsley-trigger="change" placeholder="Nama" autocomplete="off" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="email">Emel</label>
-                                                <input type="email" name="email" data-parsley-trigger="change" placeholder="Emel" autocomplete="off" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="address">Alamat</label>
-                                                <input type="text" name="address" data-parsley-trigger="change" placeholder="Alamat" autocomplete="off" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="gender">Jantina</label>
-                                                <input type="text" name="gender" data-parsley-trigger="change" placeholder="Jantina" autocomplete="off" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="dateJoin">Tarikh Sertai</label>
-                                                <input type="date" name="dateJoin" data-parsley-trigger="change" placeholder="Tarikh Sertai" autocomplete="off" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="balance">Baki Yuran</label>
-                                                <input type="text" name="balance" data-parsley-trigger="change" placeholder="Baki Yuran" autocomplete="off" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="tadabburGroup">Kumpulan Halaqah</label>
-                                                <input type="text" name="tadabburGroup" data-parsley-trigger="change" placeholder="Kumpulan Halaqah" autocomplete="off" class="form-control">
-                                            </div>
-                                            <br>
-                                            <button class="btn btn-primary" >Sunting</button>
+                                            <button id="signupBtn" class="btn btn-primary">Daftar</button>
                                             <button class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                         </form>                                  
                                     </div>
@@ -211,16 +208,13 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Buang Rekod Pelajar</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Buang Rekod Kakitangan</h5>
                                     <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
                                 </div>
-                                <div class="modal-body">
-                                    <p>Adakah anda pasti mahu membuang rekod pelajar ini daripada database secara kekal? </p>
-                                </div>
+                                <div class="modal-body"><p id="body-delete-modal"></p></div>
                                 <div class="modal-footer">
-                                    <!-- <a href="#" class="btn btn-primary" >Ya</a> -->
                                     <button class="btn btn-danger btn-delete2" >Ya</button>
-                                    <a href="#" class="btn btn-primary" data-dismiss="modal">Tidak</a>
+                                    <button class="btn btn-primary" data-dismiss="modal">Tidak</button>
                                 </div>
                             </div>
                         </div>
