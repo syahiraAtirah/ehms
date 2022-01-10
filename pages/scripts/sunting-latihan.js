@@ -14,8 +14,6 @@ db.collection("Practice").doc(pcID).collection("QnA").get().then((querySnapshot)
     querySnapshot.forEach((doc) => {
 
         qnaID.push(doc.id);
-        // console.log('ADD: ' + doc.id);
-
         const opt = `
         <div data-id='${doc.id}' class="alert alert-info fade show" role="alert">
             <a href="#" class="close btn-delete1" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></a>
@@ -29,32 +27,24 @@ db.collection("Practice").doc(pcID).collection("QnA").get().then((querySnapshot)
                 <div class="input-group-prepend"><span class="input-group-text">A</span></div>
                 <input id="opt1${doc.id}" type="text" placeholder="Pilihan jawapan" class="form-control">
             </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb1${doc.id}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
+            <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="cb1${doc.id}" name="${doc.id}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
             </label>
 
             <div class="input-group input-group-sm">
                 <div class="input-group-prepend"><span class="input-group-text">B</span></div>
                 <input id="opt2${doc.id}" type="text" placeholder="Pilihan jawapan" class="form-control">
             </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb2${doc.id}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
+            <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="cb2${doc.id}" name="${doc.id}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
             </label>
 
             <div class="input-group input-group-sm">
                 <div class="input-group-prepend"><span class="input-group-text">C</span></div>
                 <input id="opt3${doc.id}" type="text" placeholder="Pilihan jawapan" class="form-control">
             </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb3${doc.id}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
-            </label>
-
-            <div class="input-group input-group-sm">
-                <div class="input-group-prepend"><span class="input-group-text">D</span></div>
-                <input id="opt4${doc.id}" type="text" placeholder="Pilihan jawapan" class="form-control">
-            </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb4${doc.id}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
+            <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="cb3${doc.id}" name="${doc.id}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
             </label>
             </form>
         </div>
@@ -66,7 +56,6 @@ db.collection("Practice").doc(pcID).collection("QnA").get().then((querySnapshot)
         document.getElementById("opt1" + doc.id).value = doc.data().opt1;
         document.getElementById("opt2" + doc.id).value = doc.data().opt2;
         document.getElementById("opt3" + doc.id).value = doc.data().opt3;
-        document.getElementById("opt4" + doc.id).value = doc.data().opt4;
 
         console.log('CURRENT QNA [qnaID]: ' + qnaID);
 
@@ -79,26 +68,19 @@ db.collection("Practice").doc(pcID).collection("QnA").get().then((querySnapshot)
         });
 
         // VIEW CURRENT CORRECT ANSWER
-        for (let i=0 ; i < 4 ; i++) {
-            const id = doc.id;
-            const opt1 = doc.data().opt1;
-            const opt2 = doc.data().opt2;
-            const opt3 = doc.data().opt3;
-            const opt4 = doc.data().opt4;
-            const ans = doc.data().answer;
+        const id = doc.id;
+        const opt1 = doc.data().opt1;
+        const opt2 = doc.data().opt2;
+        const opt3 = doc.data().opt3;
+        const ans = doc.data().answer;
 
-            if (opt1 == ans[i]) {
-                document.getElementById("cb1" + id).checked = true;
-            } else if (opt2 == ans[i]) {
-                document.getElementById("cb2" + id).checked = true;
-            } else if (opt3 == ans[i]) {
-                document.getElementById("cb3" + id).checked = true;
-            } else if (opt4 == ans[i]) {
-                document.getElementById("cb4" + id).checked = true;
-            }
-            
-        }
-    
+        if (opt1 == ans) {
+            document.getElementById("cb1" + id).checked = true;
+        } else if (opt2 == ans) {
+            document.getElementById("cb2" + id).checked = true;
+        } else if (opt3 == ans) {
+            document.getElementById("cb3" + id).checked = true;
+        }  
     });
 });
 
@@ -125,32 +107,24 @@ function QnAform(e) {
                 <div class="input-group-prepend"><span class="input-group-text">A</span></div>
                 <input id="opt1${uid}" type="text" placeholder="Pilihan jawapan" class="form-control" required>
             </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb1${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
+            <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="cb1${uid}" name="${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
             </label>
 
             <div class="input-group input-group-sm">
                 <div class="input-group-prepend"><span class="input-group-text">B</span></div>
                 <input id="opt2${uid}" type="text" placeholder="Pilihan jawapan" class="form-control" required>
             </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb2${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
+            <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="cb2${uid}" name="${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
             </label>
 
             <div class="input-group input-group-sm">
                 <div class="input-group-prepend"><span class="input-group-text">C</span></div>
                 <input id="opt3${uid}" type="text" placeholder="Pilihan jawapan" class="form-control">
             </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb3${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
-            </label>
-
-            <div class="input-group input-group-sm">
-                <div class="input-group-prepend"><span class="input-group-text">D</span></div>
-                <input id="opt4${uid}" type="text" placeholder="Pilihan jawapan" class="form-control">
-            </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb4${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
+            <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="cb3${uid}" name="${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
             </label>
             </form>
         </div>
@@ -183,18 +157,18 @@ function validate() {
             const question = document.querySelector('#ques' + qnaID[i]).value;
             const opt1 = document.querySelector('#opt1' + qnaID[i]).value;
             const opt2 = document.querySelector('#opt2' + qnaID[i]).value;
+            const opt3 = document.querySelector('#opt3' + qnaID[i]).value;
     
-            for (let j=1 ; j < 5 ; j++) {
+            for (let j=1 ; j < 4 ; j++) {
                 const cbID = "cb" + j + qnaID[i];
                 const cb = document.getElementById(cbID);
                 if (cb.checked) {
-                    // console.log('checked: ' + cb.id);
                     checking = true;
                     break;
                 } 
             }
     
-            if (question != "" && opt1 != "" && opt2 != "") {
+            if (question != "" && opt1 != "" && opt2 != "" && opt3 != "") {
                 if(checking) {
                     console.log("--- TIADA KOSONGGG ---");
                 } else {
@@ -223,22 +197,18 @@ function updatePractice(e) {
     validate();
     console.log('KALAU ADA KOSONG TAK BOLE LALU SINI');
     
-    
     // DELETE REMOVED QNA
     db.collection("Practice").doc(pcID).collection("QnA").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            // for (let m=0 ; m < qnaID.length ; m++) {
-                if (! qnaID.includes(doc.id)) {
-                    db.collection("Practice").doc(pcID).collection("QnA").doc(doc.id).delete().then(() => {
-                        console.log(doc.id + " successfully deleted!");
-                    }).catch((error) => {
-                        console.error("Error removing document: ", error);
-                    });
-                }
-            // }
+            if (! qnaID.includes(doc.id)) {
+                db.collection("Practice").doc(pcID).collection("QnA").doc(doc.id).delete().then(() => {
+                    console.log(doc.id + " successfully deleted!");
+                }).catch((error) => {
+                    console.error("Error removing document: ", error);
+                });
+            }
         });
     });
-   
 
     db.collection("Practice").doc(pcID).update({
         quizName: document.querySelector('#pc-title').value,
@@ -253,7 +223,6 @@ function updatePractice(e) {
                 opt1: document.querySelector('#opt1' + qnaID[i]).value,
                 opt2: document.querySelector('#opt2' + qnaID[i]).value,
                 opt3: document.querySelector('#opt3' + qnaID[i]).value,
-                opt4: document.querySelector('#opt4' + qnaID[i]).value,
             })
             .then(() => {
                 console.log('----------- UPDATED EXISTING QUES : ' + qnaID[i] + "------------");
@@ -261,14 +230,14 @@ function updatePractice(e) {
                 db.collection("Practice").doc(pcID).collection("QnA").doc(qnaID[i]).get().then((doc) => {
                     const ans = doc.data().answer;
 
-                    // kosongkan dulu answer[]
-                    for (let k=0 ; k < ans.length ; k++) {
-                        db.collection("Practice").doc(pcID).collection("QnA").doc(qnaID[i]).update({
-                            answer: firebase.firestore.FieldValue.arrayRemove(ans[k])
-                        })
-                    }
+                    // // kosongkan dulu answer[]
+                    // for (let k=0 ; k < ans.length ; k++) {
+                    //     db.collection("Practice").doc(pcID).collection("QnA").doc(qnaID[i]).update({
+                    //         answer: firebase.firestore.FieldValue.arrayRemove(ans[k])
+                    //     })
+                    // }
 
-                    for (let j=1 ; j < 5 ; j++) {
+                    for (let j=1 ; j < 4 ; j++) {
                         const cbID = "cb" + j + qnaID[i];
                         const cbValue = "opt" + j + qnaID[i];
                         const cb = document.getElementById(cbID);
@@ -276,12 +245,10 @@ function updatePractice(e) {
                         
                         if (cb.checked == true) {
                             console.log('CHECKED: ' + cb.id);
-                            // console.log('value: ' + data.value);
-                            // console.log('pcID = ' + pcID);
-                            // console.log('docRef2.id = ' + qnaID[i]);
                             db.collection("Practice").doc(pcID).collection("QnA").doc(qnaID[i]).update({
-                                answer: firebase.firestore.FieldValue.arrayUnion(data.value),
-                            })
+                                answer: data.value,
+                            });
+                            break;
                         } 
                         console.log('----------- UPDATED EXISTING ANSWER : ' + qnaID[i] + "------------");
                     } 
@@ -311,23 +278,20 @@ function updatePractice(e) {
                         opt1: document.querySelector('#opt1' + qnaID[n]).value,
                         opt2: document.querySelector('#opt2' + qnaID[n]).value,
                         opt3: document.querySelector('#opt3' + qnaID[n]).value,
-                        opt4: document.querySelector('#opt4' + qnaID[n]).value,
                     })
                     .then((docRef2) => {
                         console.log('----------- ADDED NEW QUES : ' + qnaID[n] + "------------");
 
                         // CREATE CORRECT ANSWER
-                        for (let j=1 ; j < 5 ; j++) {
+                        for (let j=1 ; j < 4 ; j++) {
                             const cbID = "cb" + j + qnaID[n];
                             const cbValue = "opt" + j + qnaID[n];
                             const cb = document.getElementById(cbID);
                             const data = document.getElementById(cbValue);
                             if (cb.checked == true) {
                                 console.log('checked: ' + cb.id);
-                                // console.log('value: ' + data.value);
-                                // console.log('docRef2.id = ' + docRef2.id);
                                 db.collection("Practice").doc(pcID).collection("QnA").doc(docRef2.id).update({
-                                    answer: firebase.firestore.FieldValue.arrayUnion(data.value)
+                                    answer: data.value,
                                 })
                             }
                             console.log('----------- ADDED NEW ANSWER : ' + qnaID[n] + "------------");

@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>E-Halaqah - Profil</title>
+    <title>E-Halaqah - Profil Kakitangan</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -58,7 +58,7 @@
                                     <ul class="nav flex-column">
                                         <li class="nav-item"><a class="nav-link" href="koleksi.-latihan.html">Koleksi Latihan</a></li>
                                         <li class="nav-item"><a class="nav-link" href="perkembangan-latihan.html">Perkembangan Latihan</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="urus-latihan.html">Urus Latihan</a></li>
+                                        <li class="nav-item"><a class="nav-link nav-lead" href="urus-latihan.html">Urus Latihan</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -68,7 +68,7 @@
                                     <ul class="nav flex-column">
                                         <li class="nav-item"><a class="nav-link" href="koleksi-penilaian.html">Koleksi Penilaian</a></li>
                                         <li class="nav-item"><a class="nav-link" href="perkembangan-penilaian.html">Perkembangan Penilaian</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="urus-penilaian.html">Urus Penilaian</a></li>                       
+                                        <li class="nav-item"><a class="nav-link nav-lead" href="urus-penilaian.html">Urus Penilaian</a></li>                       
                                     </ul>
                                 </div>
                             </li>
@@ -77,14 +77,23 @@
                                 <div id="submenu-5" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item"><a class="nav-link" href="kumpulan-halaqah.html">Kumpulan Halaqah</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="urus-halaqah.html">Urus Halaqah</a></li>
+                                        <li class="nav-item"><a class="nav-link nav-lead" href="urus-halaqah.html">Urus Halaqah</a></li>
                                     </ul>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-f fa-folder"></i>Nota</a>
+                                <div id="submenu-6" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item"><a class="nav-link" href="nota.html">Koleksi Nota</a></li>
+                                        <li class="nav-item"><a class="nav-link nav-lead" href="urus-nota.html">Urus Nota</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link nav-admin" href="yuran.html" ><i class="fas fa-fw fa-inbox"></i>Yuran <span class="badge badge-secondary">New</span></a></li>
                             <li class="nav-item"><a class="nav-link" href="berita.html" ><i class="fas fa-fw fa-file"></i>Berita</a></li>
-                            <li class="nav-item"><a class="nav-link" href="yuran.html" ><i class="fas fa-fw fa-inbox"></i>Yuran <span class="badge badge-secondary">New</span></a></li>
-                            <li class="nav-item"><a class="nav-link" href="pelajar.html" ><i class="fas fa-fw fa-columns"></i>Pelajar</a></li>
-                            <li class="nav-item"><a class="nav-link" href="kakitangan.html" ><i class="fas fa-fw fa-map-marker-alt"></i>Kakitangan</a></li>
+                            <li class="nav-item"><a class="nav-link nav-admin" href="pelajar.html" ><i class="fas fa-fw fa-columns"></i>Pelajar</a></li>
+                            <li class="nav-item"><a class="nav-link nav-admin" href="kakitangan.html" ><i class="fas fa-fw fa-map-marker-alt"></i>Kakitangan</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -143,18 +152,14 @@
                                         <select class="form-control" name="role">
                                             <option disabled hidden selected>Peranan</option>
                                             <option>Admin</option>
-                                            <option>Lead instructor</option>
-                                            <option>Instructor</option>
+                                            <option>Ketua Pengajar</option>
+                                            <option>Pengajar</option>
                                           </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Nombor Telefon</label>
                                         <input name="phone" type="text" class="form-control">
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <label class="col-form-label">Guru Halaqah</label>
-                                        <input name="adminOf" type="text" class="form-control" disabled>
-                                    </div> -->
                                     <div class="form-group">
                                         <label class="col-form-label">Alamat 1</label>
                                         <input name="addr1" type="text" class="form-control">
@@ -195,9 +200,9 @@
                                         <label class="col-form-label">Tarikh menyertai</label>
                                         <input name="datejoined" type="date" class="form-control" disabled>
                                     </div>
-                                    <div class="card-body border-top">
-                                        <!-- <a href="profil-edit.html" class="btn btn-primary">Sunting Profil</a> -->
-                                        <button id="update" class="btn btn-primary">Sunting Profil</button>
+                                    <br><hr>
+                                    <div>
+                                        <button id="update" class="btn btn-info">Sunting Profil</button>
                                     </div>
                                 </form>
                             </div>
@@ -207,24 +212,6 @@
 
             </div>
             <!-- end dashboard content -->
-            <!-- footer -->
-            <div class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
-                                <a href="javascript: void(0);">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end footer -->
         </div>
         <!-- end wrapper -->
     </div>
