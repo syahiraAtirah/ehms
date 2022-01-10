@@ -23,32 +23,24 @@ function QnAform(e) {
                 <div class="input-group-prepend"><span class="input-group-text">A</span></div>
                 <input id="opt1${uid}" type="text" placeholder="Pilihan jawapan" class="form-control" required>
             </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb1${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
+            <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="cb1${uid}" name="${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
             </label>
 
             <div class="input-group input-group-sm">
                 <div class="input-group-prepend"><span class="input-group-text">B</span></div>
                 <input id="opt2${uid}" type="text" placeholder="Pilihan jawapan" class="form-control" required>
             </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb2${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
+            <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="cb2${uid}" name="${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
             </label>
 
             <div class="input-group input-group-sm">
                 <div class="input-group-prepend"><span class="input-group-text">C</span></div>
                 <input id="opt3${uid}" type="text" placeholder="Pilihan jawapan" class="form-control">
             </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb3${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
-            </label>
-
-            <div class="input-group input-group-sm">
-                <div class="input-group-prepend"><span class="input-group-text">D</span></div>
-                <input id="opt4${uid}" type="text" placeholder="Pilihan jawapan" class="form-control">
-            </div>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="cb4${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
+            <label class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="cb3${uid}" name="${uid}" class="custom-control-input"><span class="custom-control-label"><small>Jawapan yang betul</small></span>
             </label>
             </form>
         </div>
@@ -82,8 +74,9 @@ function validate() {
             const question = document.querySelector('#ques' + qnaID[i]).value;
             const opt1 = document.querySelector('#opt1' + qnaID[i]).value;
             const opt2 = document.querySelector('#opt2' + qnaID[i]).value;
+            const opt3 = document.querySelector('#opt3' + qnaID[i]).value;
     
-            for (let j=1 ; j < 5 ; j++) {
+            for (let j=1 ; j < 4 ; j++) {
                 const cbID = "cb" + j + qnaID[i];
                 const cb = document.getElementById(cbID);
                 if (cb.checked) {
@@ -93,7 +86,7 @@ function validate() {
                 } 
             }
     
-            if (question != "" && opt1 != "" && opt2 != "") {
+            if (question != "" && opt1 != "" && opt2 != "" && opt3 != "") {
                 if(checking) {
                     console.log("--- TIADA KOSONGGG ---");
                 } else {
@@ -141,11 +134,10 @@ function createPractice(e) {
                     opt1: document.querySelector('#opt1' + qnaID[i]).value,
                     opt2: document.querySelector('#opt2' + qnaID[i]).value,
                     opt3: document.querySelector('#opt3' + qnaID[i]).value,
-                    opt4: document.querySelector('#opt4' + qnaID[i]).value,
                 })
                 .then((docRef2) => {
                     // CREATE CORRECT ANSWER
-                    for (let j=1 ; j < 5 ; j++) {
+                    for (let j=1 ; j < 4 ; j++) {
                         const cbID = "cb" + j + qnaID[i];
                         const cbValue = "opt" + j + qnaID[i];
                         const cb = document.getElementById(cbID);
@@ -156,8 +148,9 @@ function createPractice(e) {
                             console.log('docRef.id = ' + docRef.id);
                             console.log('docRef2.id = ' + docRef2.id);
                             db.collection("Practice").doc(docRef.id).collection("QnA").doc(docRef2.id).update({
-                                answer: firebase.firestore.FieldValue.arrayUnion(data.value)
-                            })
+                                answer: data.value,
+                            });
+                            break;
                         }
                     } 
                 })

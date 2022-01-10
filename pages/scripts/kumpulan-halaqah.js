@@ -24,9 +24,10 @@ const renderHalaqah = doc => {
                             </div>
                             <div id="${doc.id}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                 <div class="card-body">
-                                    <ol>
-                                        <li> ${doc.data().members}</li>
-                                    </ol>
+                                    <ul>
+                                        <li>${doc.data().members[0]}</li>
+                                        <li>${doc.data().members[1]}</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

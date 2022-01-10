@@ -58,7 +58,7 @@
                                     <ul class="nav flex-column">
                                         <li class="nav-item"><a class="nav-link" href="koleksi.-latihan.html">Koleksi Latihan</a></li>
                                         <li class="nav-item"><a class="nav-link" href="perkembangan-latihan.html">Perkembangan Latihan</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="urus-latihan.html">Urus Latihan</a></li>
+                                        <li class="nav-item"><a class="nav-link nav-lead" href="urus-latihan.html">Urus Latihan</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -68,7 +68,7 @@
                                     <ul class="nav flex-column">
                                         <li class="nav-item"><a class="nav-link" href="koleksi-penilaian.html">Koleksi Penilaian</a></li>
                                         <li class="nav-item"><a class="nav-link" href="perkembangan-penilaian.html">Perkembangan Penilaian</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="urus-penilaian.html">Urus Penilaian</a></li>                       
+                                        <li class="nav-item"><a class="nav-link nav-lead" href="urus-penilaian.html">Urus Penilaian</a></li>                       
                                     </ul>
                                 </div>
                             </li>
@@ -77,14 +77,23 @@
                                 <div id="submenu-5" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item"><a class="nav-link" href="kumpulan-halaqah.html">Kumpulan Halaqah</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="urus-halaqah.html">Urus Halaqah</a></li>
+                                        <li class="nav-item"><a class="nav-link nav-lead" href="urus-halaqah.html">Urus Halaqah</a></li>
                                     </ul>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-f fa-folder"></i>Nota</a>
+                                <div id="submenu-6" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item"><a class="nav-link" href="nota.html">Koleksi Nota</a></li>
+                                        <li class="nav-item"><a class="nav-link nav-lead" href="urus-nota.html">Urus Nota</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link nav-admin" href="yuran.html" ><i class="fas fa-fw fa-inbox"></i>Yuran <span class="badge badge-secondary">New</span></a></li>
                             <li class="nav-item"><a class="nav-link" href="berita.html" ><i class="fas fa-fw fa-file"></i>Berita</a></li>
-                            <li class="nav-item"><a class="nav-link" href="yuran.html" ><i class="fas fa-fw fa-inbox"></i>Yuran <span class="badge badge-secondary">New</span></a></li>
-                            <li class="nav-item"><a class="nav-link" href="pelajar.html" ><i class="fas fa-fw fa-columns"></i>Pelajar</a></li>
-                            <li class="nav-item"><a class="nav-link" href="kakitangan.html" ><i class="fas fa-fw fa-map-marker-alt"></i>Kakitangan</a></li>
+                            <li class="nav-item"><a class="nav-link nav-admin" href="pelajar.html" ><i class="fas fa-fw fa-columns"></i>Pelajar</a></li>
+                            <li class="nav-item"><a class="nav-link nav-admin" href="kakitangan.html" ><i class="fas fa-fw fa-map-marker-alt"></i>Kakitangan</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -119,43 +128,86 @@
                 <!-- row for picture and form-->
                 <div class="row">
                     <!-- column for picture -->
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card card-fluid">
                             <div class="card-body text-center">
                                 <a class="user-avatar user-avatar-xxxl my-3" id="profile-link" target="_blank">
-                                  <img src="../assets/images/avatar-1.jpg" id="profile-img" alt="User Avatar" class="rounded-circle user-avatar-xxxl">
-                                      </a>
-                                <h3 class="card-title mb-2 text-truncate text-primary" id="profile-fullname"></h3>
-                                <h6 class="card-subtitle mb-3" id="profile-role"></h6>
+                                    <img src="../assets/images/avatar-1.jpg" id="profile-img" alt="User Avatar" class="rounded-circle user-avatar-xxxl">
+                                </a>
                             </div>
                         </div>
                     </div>
                    
                     <!-- column for form -->
-                    <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="card profile">
                             <h5 class="card-header">Maklumat Pengguna</h5>
                             <div class="card-body">
                                 <form class="card-content form">
                                     <div class="form-group">
-                                        <label for="emel" class="col-form-label">Emel</label>
+                                        <label class="col-form-label">Emel</label>
                                         <input name="email" type="email" class="form-control" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="nombortelefon" class="col-form-label">Nombor Telefon</label>
-                                        <input name="phone" type="text" class="form-control" disabled>
+                                        <label class="col-form-label">Nama Penuh</label>
+                                        <input name="fullname" type="text" class="form-control" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="jawatan" class="col-form-label">Alamat Penuh</label>
-                                        <input name="address"  type="text" class="form-control" disabled>
+                                        <label class="col-form-label">Peranan</label>
+                                        <select class="form-control" name="role" disabled>
+                                            <option disabled hidden selected>Peranan</option>
+                                            <option>Admin</option>
+                                            <option>Ketua Pengajar</option>
+                                            <option>Pengajar</option>
+                                          </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="jawatan" class="col-form-label">Tarikh menyertai</label>
+                                        <label class="col-form-label">Nombor Telefon</label>
+                                        <input name="phone" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Alamat 1</label>
+                                        <input name="addr1" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Alamat 2</label>
+                                        <input name="addr2" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Poskod</label>
+                                        <input name="postcode" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Bandar</label>
+                                        <input name="city" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Negeri</label>
+                                        <select class="form-control" name="state">
+                                            <option disabled hidden selected>Negeri</option>
+                                            <option>Johor</option>
+                                            <option>Kedah</option>
+                                            <option>Kelantan</option>
+                                            <option>Kuala Lumpur</option>
+                                            <option>Melaka</option>
+                                            <option>Negeri Sembilan</option>
+                                            <option>Pahang</option>
+                                            <option>Perak</option>
+                                            <option>Perlis</option>
+                                            <option>Pulau Pinang</option>
+                                            <option>Sabah</option>
+                                            <option>Sarawak</option>
+                                            <option>Selangor</option>
+                                            <option>Terengganu</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Tarikh menyertai</label>
                                         <input name="datejoined" type="date" class="form-control" disabled>
                                     </div>
-                                    <div class="card-body border-top">
-                                        <!-- <a href="profil-edit.html" class="btn btn-primary">Sunting Profil</a> -->
-                                        <button id="update" class="btn btn-primary">Sunting Profil</button>
+                                    <br><hr>
+                                    <div>
+                                        <button id="update" class="btn btn-info">Sunting Profil</button>
                                     </div>
                                 </form>
                             </div>
@@ -165,24 +217,6 @@
 
             </div>
             <!-- end dashboard content -->
-            <!-- footer -->
-            <div class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
-                                <a href="javascript: void(0);">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end footer -->
         </div>
         <!-- end wrapper -->
     </div>

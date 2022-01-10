@@ -6,13 +6,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>E-Halaqah - Sunting Latihan </title>
+    <title>E-Halaqah - Perkembangan Latihan</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/libs/css/style.css">
     <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
 </head>
 
 <body>
@@ -57,8 +56,8 @@
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item"><a class="nav-link" href="koleksi.-latihan.html">Koleksi Latihan</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="perkembangan-latihan.html">Perkembangan Latihan</a></li>
-                                        <li class="nav-item"><a class="nav-link nav-lead active" href="urus-latihan.html">Urus Latihan</a></li>
+                                        <li class="nav-item"><a class="nav-link active" href="perkembangan-latihan.html">Perkembangan Latihan</a></li>
+                                        <li class="nav-item"><a class="nav-link nav-lead" href="urus-latihan.html">Urus Latihan</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -107,13 +106,12 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">Sunting Latihan</h2>
+                            <h2 class="pageheader-title">Perkembangan Latihan</h2>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Latihan</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Urus Latihan</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Sunting Latihan</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Perkembangan Latihan</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -122,35 +120,71 @@
                 </div>
                 <!-- end pageheader -->
 
-                <!-- view practice -->
+                <!-- search bar -->
                 <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        
-                        <div class="card edit-practice">
-                            <div class="card-body">
-                                <form class="form">
-                                    <div class="form-group">
-                                        <label for="pc-title" class="col-form-label">Tajuk Latihan</label>
-                                        <input id="pc-title" name="title" type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="pc-desc">Penerangan</label>
-                                        <textarea class="form-control" name="desc" id="pc-desc" rows="3"></textarea>
-                                    </div>
-                                    <div id="viewQNA"></div>
-                                    <hr>
-                                    <button id="addQues" class="btn btn-info">Tambah Soalan</button>
-                                    <hr>
-                                    <button id="createPc" class="btn btn-secondary btn-validate">Simpan</button>
-                                    <button class="btn btn-danger" data-dismiss="modal">Batal</button>
-                                </form>
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12" id="practice-searchbar">
+                            <input class="form-control" type="text" id="searchBar" oninput="Search((this.value).toLowerCase())" placeholder="Carian...">
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row" id="not-available">
+                    <!-- will be shown if the user has no halaqah yet -->
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-6 col-lg-4 col-md-6 col-sm-12 col-12" id="practice-header1">
+                        <div class="card">
+                            <h5 class="list-group-item list-group-item-danger text-center">Pelajar yang belum membuat latihan</h5>
+                            <div>
+                                <div class="list-group" id="not-done">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-4 col-md-6 col-sm-12 col-12" id="practice-header2">
+                        <div class="card">
+                            <h5 class="list-group-item list-group-item-primary text-center">Pelajar yang telah membuat latihan</h5>
+                            <div>
+                                <div class="list-group" id="done">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="resultModalLabel"></h5>
+                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                                </div>
+                                <div class="modal-body">
+                                    <p id="studentName"></p>
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Cubaan</th>
+                                                <th scope="col">Markah</th>
+                                                <th scope="col">Tarikh dibuat</th>
+                                                <th scope="col">Masa diambil</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="result-list">
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                
             </div>
-
         </div>
         <!-- end main wrapper -->
     </div>
@@ -162,15 +196,14 @@
     <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <script src="../assets/libs/js/main-js.js"></script>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
-
-    <script src="../pages/scripts/init.js"></script>
-    <script src="../pages/scripts/auth.js"></script>
-    <script src="../pages/scripts/sunting-latihan.js"></script>
-
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+    
+        <script src="../pages/scripts/init.js"></script>
+        <script src="../pages/scripts/auth.js"></script>
+        <script src="../pages/scripts/perkembangan-latihan-semua.js"></script>
 </body>
  
 </html>

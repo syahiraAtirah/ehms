@@ -2,7 +2,7 @@ const newsList = document.querySelector('#news-list');
 
 const renderNews = doc => {
     const div = `
-    <div data-id='${doc.id}' class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+    <div data-id='${doc.id}' class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
         <div class="card card-figure">
             <figure class="figure">
                 <img class="img-fluid" src="${doc.data().imageUrl}" alt="${doc.data().name}">

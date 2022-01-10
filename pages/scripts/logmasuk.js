@@ -12,13 +12,18 @@ async function login(e) {
 
     const email = document.querySelector('#login-email').value;
     const password = document.querySelector('#login-password').value;
+    const peranan = document.querySelector('#peranan').value;
 
     await auth.signInWithEmailAndPassword(email, password).then(() => {
-
         const docRef = db.collection("instructors").doc(auth.currentUser.uid);
         docRef.get().then((doc) => {
-            if (doc.exists) {
-                window.location.href = "lamanutama.html";
+            if (doc.exists) {          
+                const role = doc.data().role;
+                if (role == peranan) {
+                    window.location.href = "lamanutama.html";
+                } else {
+                    alert('Sila pilih peranan yang betul.');
+                }
             } else {
                 alert('Emel yang digunakan tidak didaftar.')
             }
