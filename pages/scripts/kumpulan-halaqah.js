@@ -1,6 +1,6 @@
 const halaqahList = document.querySelector('#halaqah-list');
 const renderHalaqah = doc => {
-    const div = `
+    var div = `
     <div data-id='${doc.id}' class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
         <div class="card">
             <div class="card-header d-flex">
@@ -24,9 +24,12 @@ const renderHalaqah = doc => {
                             </div>
                             <div id="${doc.id}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                 <div class="card-body">
-                                    <ul>
-                                        <li>${doc.data().members[0]}</li>
-                                        <li>${doc.data().members[1]}</li>
+                                    <ul>`;
+
+                                    for (let m=0 ; m < doc.data().members.length ; m++) {
+                                        div += `<li class="no-member"> ${doc.data().members[m]}</li>`;
+                                    }
+                                        div += `
                                     </ul>
                                 </div>
                             </div>
@@ -40,18 +43,17 @@ const renderHalaqah = doc => {
     halaqahList.insertAdjacentHTML('beforeend', div);
 };
 
-
-// realtime listener
-db.collection('TadabburGroup').onSnapshot(snapshot => {
-    snapshot.docChanges().forEach(change => {
-        if(change.type === 'added') {
-            renderHalaqah(change.doc);
-            console.log('ADDED');
-        }
-        if(change.type === 'removed') {
-            let tr = document.querySelector(`[data-id='${change.doc.id}']`);
-            halaqahList.removeChild(tr);
-            console.log('REMOVED');
-        }
-    })
+// get current user
+auth.onAuthStateChanged(user => {
+    if (user) {
+        // filter the user with their respective halaqah group        
+        db.collection("TadabburGroup").where("adminID", "==", user.uid).onSnapshot((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log("current halaqah group: " + doc.data().groupName);
+                renderHalaqah(doc);
+            });
+        });
+    } else {
+        console.log("you have no halaqah yet.");
+    }
 });
