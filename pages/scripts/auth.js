@@ -31,7 +31,7 @@ auth.onAuthStateChanged(user => {
         document.querySelector('#currentuser').innerHTML = user.email;
         console.log('Signed in as ', user.email);
     } else {
-        window.location.href = "logmasuk.html";
+        window.location.href = "index.html";
     }
 });
 

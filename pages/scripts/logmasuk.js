@@ -17,10 +17,10 @@ async function login(e) {
     await auth.signInWithEmailAndPassword(email, password).then(() => {
         const docRef = db.collection("instructors").doc(auth.currentUser.uid);
         docRef.get().then((doc) => {
-            if (doc.exists) {          
+            if (doc.exists) {      
                 const role = doc.data().role;
                 if (role == peranan) {
-                    window.location.href = "lamanutama.html";
+                    window.location.href = "../pages/lamanutama.html";
                 } else {
                     alert('Sila pilih peranan yang betul.');
                 }
