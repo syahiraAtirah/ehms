@@ -116,10 +116,50 @@
                     </div>
                 </div>
                 <!-- end pageheader -->
+
                 <div class="row">
+                    <!-- basic table  -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h3 class="text-center">Akan Datang</h3>
+                        <div class="card">
+                            <h5 class="card-header">Tukar harga yuran semasa: -</h5>
+                            <div class="card-body">
+                                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Jumlah Baru: </label>
+                                        <input name="amount" id="amount" type="text" size="40" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Link URL: </label>
+                                        <input name="linkUrl" id="linkUrl" type="text" size="70" class="form-control" required>
+                                    </div>
+                                </div>
+                               
+                                <button class="btn btn-info" id="addPayment">Tambah</button>
+                                <!-- <button id="updateAmount" class="btn btn-info" type="submit" onclick="addPayment()">Tukar</button> -->
+                                <br><br>
+                                <hr>
+                                <h5 class="card-header">Rekod Yuran: -</h5>
+                                <div class="table-responsive">
+                                    <table id="payment-list" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama</th>
+                                                <th>Emel</th>
+                                                <th>Jumlah</th>
+                                                <th>Tarikh</th>
+                                                <th>Status</th>
+                                                <th>Tindakan</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- end basic table  -->
+
                 </div>
             </div>
         </div>
@@ -140,6 +180,7 @@
 
     <script src="../pages/scripts/init.js"></script>
     <script src="../pages/scripts/auth.js"></script>
+    <script src="../pages/scripts/yuran.js"></script>
 </body>
  
 </html>

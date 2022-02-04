@@ -6,13 +6,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>E-Halaqah - Lihat Penilaian</title>
+    <title>E-Halaqah - Keputusan Penilaian</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/libs/css/style.css">
     <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
 </head>
 
 <body>
@@ -66,8 +65,8 @@
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-wpforms"></i>Penilaian</a>
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
-                                        <li class="nav-item"><a class="nav-link active" href="koleksi-penilaian.html">Koleksi Penilaian</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="perkembangan-penilaian.html">Perkembangan Penilaian</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="koleksi-penilaian.html">Koleksi Penilaian</a></li>
+                                        <li class="nav-item"><a class="nav-link active" href="perkembangan-penilaian.html">Perkembangan Penilaian</a></li>
                                         <li class="nav-item"><a class="nav-link nav-lead" href="urus-penilaian.html">Urus Penilaian</a></li>                       
                                     </ul>
                                 </div>
@@ -103,25 +102,31 @@
         <!-- wrapper  -->
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
-
-                <!-- view assessment -->
+                <!-- pageheader -->
+                
+                <!-- view assessment's answer -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         
-                        <div class="card view-practice">
+                        <div class="card view-ass">
                             <div class="card-body">
                                 <form class="form">
                                     <div class="form-group">
-                                        <label for="pc-title" class="col-form-label">Tajuk Penilaian</label>
-                                        <input id="pc-title" name="title" type="text" class="form-control" disabled>
+                                        <label for="ass-title" class="col-form-label">Tajuk Penilaian</label>
+                                        <input id="ass-title" name="title" type="text" class="form-control" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="pc-desc">Penerangan</label>
-                                        <textarea class="form-control" name="desc" id="pc-desc" rows="3" disabled></textarea>
+                                        <label for="ass-desc">Penerangan</label>
+                                        <textarea class="form-control" name="desc" id="ass-desc" rows="3" disabled></textarea>
                                     </div>
                                     <hr>
                                     <div id="viewQNA">
-                                        <label for="pc-desc">Soalan:-</label>
+                                        <label for="pc-desc">Soalan, Jawapan dan Keputusan:-</label>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label for="ass-result">Keputusan Keseluruhan:</label>
+                                        <textarea class="form-control" name="result" id="ass-result" rows="3" disabled></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -129,9 +134,11 @@
                     </div>
                 </div>
 
-            </div>
+                <!-- end pageheader -->
+                
+                
 
-            
+            </div>
         </div>
         <!-- end main wrapper -->
     </div>
@@ -150,7 +157,7 @@
 
     <script src="../pages/scripts/init.js"></script>
     <script src="../pages/scripts/auth.js"></script>
-    <script src="../pages/scripts/lihat-penilaian.js"></script>
+    <script src="../pages/scripts/keputusan-penilaian.js"></script>
 </body>
  
 </html>
