@@ -16,7 +16,7 @@ const renderNotes = doc => {
             <div class="card-body">
                 <p class="card-text">Pautan:</p>
                 <p class="card-text">${doc.data().url}</p>
-                <a href="${doc.data().url}" target="_blank" class="btn btn-secondary">Buka Nota</a>
+                <a href="${doc.data().url}" target="_blank" class="btn btn-xs btn-info">Buka Nota</a>
             </div>
         </div>
     </div>

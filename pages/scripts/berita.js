@@ -10,7 +10,7 @@ const renderNews = doc => {
                     <p class="text-muted mb-0"> ${doc.data().desc} </p>
                 </figcaption>
             </figure>
-            <button class="btn btn-danger btn-xs btn-delete1" data-toggle="modal" data-target="#deleteNews">Buang</button>
+            <button class="btn btn-secondary btn-xs btn-delete1" data-toggle="modal" data-target="#deleteNews">Buang</button>
         </div>
     </div>
     `;

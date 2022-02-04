@@ -11,7 +11,7 @@ const assessed = document.querySelector('#assessed');
 
 function assessmentAssessed(quizName, studID, fullname, intersection, groupName) {
     const assAssessed = `
-    <a href="#" onclick="window.open('jawapan-penilaian.html?one=${intersection}&two=${studID}', '_blank');" class="list-group-item listItem list-group-item-action flex-column align-items-start" data-toggle="modal" data-target="#resultModal">
+    <a href="#" onclick="window.open('keputusan-penilaian.html?one=${intersection}&two=${studID}', '_blank');" class="list-group-item listItem list-group-item-action flex-column align-items-start" data-toggle="modal" data-target="#resultModal">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">${quizName}</h5>
             <small class="text-muted">${groupName}</small>
