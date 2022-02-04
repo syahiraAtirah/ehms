@@ -53,7 +53,7 @@ function assessmentsNotDone(quizName, groupName, fullname) {
     return assNotDone;
 }
 
-auth.onAuthStateChanged((user) => {
+auth.onAuthStateChanged(user => {
 
     const allHalaqah = [];
 
@@ -70,7 +70,7 @@ auth.onAuthStateChanged((user) => {
             allHalaqah.push(doc.data().adminID);
         })
 
-        if (allHalaqah.includes(user.uid)) {      
+        if (allHalaqah.includes(user.uid)) {     
             db.collection("students").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     const studID = doc.id;
@@ -122,7 +122,8 @@ auth.onAuthStateChanged((user) => {
                     });        
                 });
             });
-        } else {      
+        } 
+        else {      
             console.log("You own no halaqah group yet.");
             db.collection("TadabburGroup").where("adminID", "!=", user.uid).get().then((querySnapshot) => {
                 querySnapshot.forEach((doc12) => {
