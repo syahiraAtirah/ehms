@@ -116,9 +116,129 @@
                     </div>
                 </div>
                 <!-- end pageheader -->
+
                 <div class="row">
+                    <!-- basic table  -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h3 class="text-center">Akan Datang</h3>
+                        <div class="card">
+                            <h5 class="card-header">Rekod Pelajar</h5>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label class="col-form-label">Jumlah Baru: </label>
+                                    <input name="amount" id="amount" type="text" size="40">
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Link URL: </label>
+                                    <input name="linkUrl" id="linkUrl" type="text" size="70">
+                                </div>
+                                <button class="btn btn-primary" id="addPayment">Tambah</button>
+                                <!-- <button id="updateAmount" class="btn btn-info" type="submit" onclick="addPayment()">Tukar</button> -->
+                                <br><br>
+                                <div class="table-responsive">
+                                    <table id="payment-list" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama</th>
+                                                <th>Emel</th>
+                                                <th>Jumlah</th>
+                                                <th>Tarikh</th>
+                                                <th>Status</th>
+                                                <th>Tindakan</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end basic table  -->
+
+                    <!-- register instructor modal -->
+                    <div class="modal-wrapper modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Daftar Kakitangan Baru</h5>
+                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
+                                        <form id="signup-form">
+                                            <div class="form-group">
+                                                <input id="signup-img" type="file" data-parsley-trigger="change"  class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-email" type="email" data-parsley-trigger="change" placeholder="Emel" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-password" type="password" data-parsley-trigger="change" placeholder="Kata laluan" autocomplete="off" class="form-control" required> 
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-fullname" type="text" data-parsley-trigger="change" placeholder="Nama penuh" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-phone" type="text" data-parsley-trigger="change" placeholder="Nombor telefon" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-addr1" type="text" data-parsley-trigger="change" placeholder="Alamat 1" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-addr2" type="text" data-parsley-trigger="change" placeholder="Alamat 2" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-postcode" type="text" data-parsley-trigger="change" placeholder="Poskod" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="signup-city" type="text" data-parsley-trigger="change" placeholder="Bandar" autocomplete="off" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control" id="signup-state" required>
+                                                    <option disabled hidden selected>Negeri</option>
+                                                    <option>Johor</option>
+                                                    <option>Kedah</option>
+                                                    <option>Kelantan</option>
+                                                    <option>Kuala Lumpur</option>
+                                                    <option>Melaka</option>
+                                                    <option>Negeri Sembilan</option>
+                                                    <option>Pahang</option>
+                                                    <option>Perak</option>
+                                                    <option>Perlis</option>
+                                                    <option>Pulau Pinang</option>
+                                                    <option>Sabah</option>
+                                                    <option>Sarawak</option>
+                                                    <option>Selangor</option>
+                                                    <option>Terengganu</option>
+                                                  </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="signup-datejoined">Tarikh sertai</label>
+                                                <input id="signup-datejoined" type="date" data-parsley-trigger="change" autocomplete="off" class="form-control" required>
+                                            </div> 
+                                            <br>
+                                            <button id="signupBtn" class="btn btn-primary">Daftar</button>
+                                            <button class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        </form>                                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- modal to delete user -->
+                    <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Buang Rekod Kakitangan</h5>
+                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                                </div>
+                                <div class="modal-body"><p id="body-delete-modal"></p></div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-danger btn-delete2" >Ya</button>
+                                    <button class="btn btn-primary" data-dismiss="modal">Tidak</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,6 +260,7 @@
 
     <script src="../pages/scripts/init.js"></script>
     <script src="../pages/scripts/auth.js"></script>
+    <script src="../pages/scripts/yuran.js"></script>
 </body>
  
 </html>
