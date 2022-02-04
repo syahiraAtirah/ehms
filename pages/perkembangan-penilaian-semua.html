@@ -6,13 +6,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>E-Halaqah - Sunting Latihan </title>
+    <title>E-Halaqah - Perkembangan Penilaian</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/libs/css/style.css">
     <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
 </head>
 
 <body>
@@ -58,7 +57,7 @@
                                     <ul class="nav flex-column">
                                         <li class="nav-item"><a class="nav-link" href="koleksi.-latihan.html">Koleksi Latihan</a></li>
                                         <li class="nav-item"><a class="nav-link" href="perkembangan-latihan.html">Perkembangan Latihan</a></li>
-                                        <li class="nav-item"><a class="nav-link nav-lead active" href="urus-latihan.html">Urus Latihan</a></li>
+                                        <li class="nav-item"><a class="nav-link nav-lead" href="urus-latihan.html">Urus Latihan</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -67,7 +66,7 @@
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item"><a class="nav-link" href="koleksi-penilaian.html">Koleksi Penilaian</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="perkembangan-penilaian.html">Perkembangan Penilaian</a></li>
+                                        <li class="nav-item"><a class="nav-link active" href="perkembangan-penilaian.html">Perkembangan Penilaian</a></li>
                                         <li class="nav-item"><a class="nav-link nav-lead" href="urus-penilaian.html">Urus Penilaian</a></li>                       
                                     </ul>
                                 </div>
@@ -107,13 +106,12 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">Sunting Latihan</h2>
+                            <h2 class="pageheader-title">Perkembangan Penilaian</h2>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Latihan</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Urus Latihan</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Sunting Latihan</li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Penilaian</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Perkembangan Penilaian</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -121,35 +119,47 @@
                     </div>
                 </div>
                 <!-- end pageheader -->
-
-                <!-- view practice -->
+                
+                <!-- search bar -->
                 <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        
-                        <div class="card edit-practice">
-                            <div class="card-body">
-                                <form class="form">
-                                    <div class="form-group">
-                                        <label for="pc-title" class="col-form-label">Tajuk Latihan</label>
-                                        <input id="pc-title" name="title" type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="pc-desc">Penerangan</label>
-                                        <textarea class="form-control" name="desc" id="pc-desc" rows="3"></textarea>
-                                    </div>
-                                    <div id="viewQNA"></div>
-                                    <hr>
-                                    <button id="addQues" class="btn btn-info">Tambah Soalan</button>
-                                    <hr>
-                                    <button id="createPc" class="btn btn-secondary btn-validate">Simpan</button>
-                                </form>
+                    <div class="col-xl-8 col-lg-4 col-md-6 col-sm-12 col-12" id="ass-searchbar">
+                        <input class="form-control" type="text" id="searchBar" oninput="Search((this.value).toLowerCase())" placeholder="Carian...">
+                        <br>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" id="ass-header1">
+                        <div class="card">
+                            <h5 class="list-group-item list-group-item-primary text-center">Pelajar yang belum membuat penilaian</h5>
+                            <div>
+                                <div class="list-group" id="not-done">
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" id="ass-header2">
+                        <div class="card">
+                            <h5 class="list-group-item list-group-item-danger text-center">Pelajar yang telah membuat penilaian</h5>
+                            <div>
+                                <div class="list-group" id="done">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" id="ass-header3">
+                        <div class="card">
+                            <h5 class="list-group-item list-group-item-success text-center">Pelajar yang telah dinilai</h5>
+                            <div>
+                                <div class="list-group" id="assessed">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-
             </div>
-
         </div>
         <!-- end main wrapper -->
     </div>
@@ -168,8 +178,7 @@
 
     <script src="../pages/scripts/init.js"></script>
     <script src="../pages/scripts/auth.js"></script>
-    <script src="../pages/scripts/sunting-latihan.js"></script>
-
+    <script src="../pages/scripts/perkembangan-penilaian-semua.js"></script>
 </body>
  
 </html>

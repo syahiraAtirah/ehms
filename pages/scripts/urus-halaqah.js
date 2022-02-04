@@ -46,9 +46,14 @@ const renderHalaqah = doc => {
                                 <div class="card-body">
                                     <ul>`;
 
-                                    for (let m=0 ; m < doc.data().members.length ; m++) {
-                                        div += `<li class="no-member"> ${doc.data().members[m]}</li>`;
-                                    }
+                                        if (doc.data().members.length > 0) {
+                                            for (let m=0 ; m < doc.data().members.length ; m++) {
+                                                div += `<li class="no-member"> ${doc.data().members[m]}</li>`;
+                                            }
+                                        } else {
+                                            div += `<li class="no-member">Belum mempunyai pelajar</li>`;
+                                        }
+
                                         div += `
                                     </ul>
                                 </div>
@@ -81,7 +86,6 @@ const renderHalaqah = doc => {
         })
     })
 };
-
 
 // realtime listener
 db.collection('TadabburGroup').onSnapshot(snapshot => {

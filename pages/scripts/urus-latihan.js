@@ -32,22 +32,38 @@ const renderPractice = doc => {
         btnDelete2.addEventListener('click', () => {
             db.collection('Practice').doc(doc.data().quizID).collection('QnA').get().then((querySnapshot) => {
                 querySnapshot.forEach((docu) => {
-
                     db.collection('Practice').doc(doc.data().quizID).collection('QnA').doc(docu.id).delete().then(() => {
-                        console.log('------------ Document succesfully deleted from FIRESTORE! : ' + docu.id + " in " + doc.data().quizID + "--------------------");
-                        // setTimeout(function(){
-                        //     document.location.reload();
-                        // }, 1000);
+                        console.log('success delete all the QNA under this practice.');
                     })
                 });
             })
             .then(() => {
                 db.collection('Practice').doc(doc.data().quizID).delete().then(() => {
-                    console.log('------------ Document succesfully deleted from FIRESTORE! : ' + doc.data().quizID );
-                    // setTimeout(function(){
-                    //     document.location.reload();
-                    // }, 1000);
+                    console.log('success delete the doc of this practice');
                 })
+            }) 
+            .then(() => {
+                db.collection("students").get().then((querySnapshot) => {
+                    querySnapshot.forEach((doc1) => {
+                        const studID = doc1.id;
+                        console.log(studID);
+                        const quizID = doc.data().quizID;
+                        console.log(quizID);
+
+                        db.collection('students').doc(studID).collection('practices').get().then(doc3 => { 
+                            if (doc3.docs.length > 0) {
+        
+                                db.collection("students").doc(studID).collection('practices').where("quizID", "==", quizID).get().then((querySnapshot) => {
+                                    querySnapshot.forEach((doc2) => {
+                                        db.collection("students").doc(studID).collection('practices').doc(doc2.id).delete().then(() => {
+                                            console.log('success delete the doc of this practice under Students DB');
+                                        })
+                                    });
+                                })
+                            }
+                        })
+                    });
+                });
             })  
             .catch(err => {
                 console.log('Error removing document', err);

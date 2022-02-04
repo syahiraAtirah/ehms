@@ -89,11 +89,11 @@ function createAssessment(e) {
                 db.collection("Assessment").doc(docRef.id).collection("Question").add({
                     question: document.querySelector('#ques' + qnaID[i]).value, 
                 })
-                // SUCCESS
-                console.log('Assessment CREATED SUCCESSFULLY');
-                alert('Alhamdulillah. Penilaian telah berjaya dicipta.');
-                // setTimeout(function(){ window.location.href = "urus-penilaian.html"; }, 4000); 
             }
+             // SUCCESS
+             console.log('Assessment CREATED SUCCESSFULLY');
+             alert('Alhamdulillah. Penilaian telah berjaya dicipta.');
+             // setTimeout(function(){ window.location.href = "urus-penilaian.html"; }, 4000);
         })
     })
     .catch((error) => {

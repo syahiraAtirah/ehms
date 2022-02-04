@@ -1,9 +1,7 @@
 //
 //
-// 1. Nanti figure out mcm mana nk buat 'Tiada pelajar baru', when all registered students already been assigned to halaqah
-// 2. Cantikkan modal when use addMembers() - its good to dislpay selected members before actually add it to db
-//
-//
+// 1. 'Belum mempunyai pelajar' still display even dh ada ahli
+// 2. nnti test 'Tiada pelajar baru. Semua pelajar telah didaftarkan pada kumpulan-kumpulan halaqah yang sedia ada.'
 // 
 
 const gpID = window.location.search.substring(1);
@@ -22,64 +20,96 @@ db.collection("instructors").onSnapshot((querySnapshot) => {
     });
 });
 
-// view halaqah data in form
-const halaqah = document.querySelector('.halaqah .formGp');
-const memberList = document.querySelector('#memberlist');
-db.collection("TadabburGroup").doc(gpID).get().then((doc) => {
-    halaqah.groupName.value = doc.data().groupName;
-    halaqah.admin.value = doc.data().admin;
-    const members = doc.data().members;
-    if(members.length > 0) { 
-        for(let i = 0; i < members.length; i++){
-            const li = `
-                <li data-id1='${members[i]}' class="list-group-item d-flex justify-content-between align-items-center">
-                    ${members[i]}
-                    <button id="${members[i]}" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#removeMember" onclick="removeMember('${members[i]}', '${doc.data().groupName}')"><i class="far fa-trash-alt"></i></button>
-                </li>
-            `;
-            memberList.insertAdjacentHTML('beforeend', li);
-        }
-    } else {
-        const li = `
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Belum mempunyai pelajar 
-            </li>
-        `;
-        memberList.insertAdjacentHTML('beforeend', li);
-    }
-});
-
-// remove selected of current's member
-const removeBody = document.querySelector('#body-remove-modal');
-function removeMember(removeName, removeGp) {
-    removeBody.innerHTML = "Adakah anda pasti mahu mengeluarkan " + removeName + " daripada " + removeGp + "?";
-    document.querySelector('.btn-delete2').addEventListener('click', () => {
-        const selectMember = db.collection("TadabburGroup").doc(gpID);
-        selectMember.update({
-            members: firebase.firestore.FieldValue.arrayRemove(removeName)
-        });
-        let tr = document.querySelector(`[data-id1='${removeName}']`);
-        console.log('tr: ' + tr);
-        memberList.removeChild(tr);
-
-        const student = `
-        <li data-id2='${removeName}' class="list-group-item d-flex justify-content-between align-items-center">
-            ${removeName}
+const newStudent = document.querySelector('#new-student');
+function viewNewStudents(newStud) {
+    const student = `
+        <li data-id='${newStud}' class="list-group-item d-flex justify-content-between align-items-center">
+            ${newStud}
             <div class="switch-button switch-button-xs">
-                <input type="checkbox" name="${removeName}" id="${removeName}">
-                <span><label for="${removeName}"></label></span>
+                <input type="checkbox" name="${newStud}" id="${newStud}">
+                <span><label for="${newStud}"></label></span>
             </div>
         </li>
-        `;
-        newStudent.insertAdjacentHTML('beforeend', student);
-
-        // setTimeout(function(){
-        //     document.location.reload();
-        // }, 300);
-    })
+    `;
+    return student;
 }
 
-// edit halaqah
+const memberList = document.querySelector('#memberlist');
+function viewMemberList(member) {
+    const memberr = `
+        <li data-id='${member}' class="list-group-item d-flex justify-content-between align-items-center">
+            ${member}
+            <button id="${member}" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#removeMember" onclick="removeMember('${member}')"><i class="far fa-trash-alt"></i></button>
+        </li>
+    `;
+    return memberr;
+}
+
+// view halaqah data in form and the current member in 'Pelajar Terkini' section
+const halaqah = document.querySelector('.halaqah .formGp');
+const noStudentYet = document.querySelector('#noStudYet');
+
+
+const allStudents = [];
+const membersWithHalaqah = [];
+const noNewStudent = document.querySelector('#noNewStud');
+auth.onAuthStateChanged(() => {
+
+    db.collection("TadabburGroup").doc(gpID).onSnapshot((doc) => {
+        halaqah.groupName.value = doc.data().groupName;
+        halaqah.admin.value = doc.data().admin;
+    
+        const members = doc.data().members;
+        if(members.length > 0) { 
+            for(let i = 0; i < members.length; i++){
+                memberList.insertAdjacentHTML('beforeend', viewMemberList(members[i]));
+            }
+            
+        } else {
+            const li = `
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Belum mempunyai pelajar 
+                </li>
+            `;
+            noStudentYet.innerHTML = li;
+        }
+    });
+
+    db.collection("students").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            allStudents.push(doc.data().fullname);
+        })
+
+        db.collection("TadabburGroup").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const members = doc.data().members;
+                if(members.length > 0) {
+                    for(let i = 0; i < members.length; i++) {
+                        membersWithHalaqah.push(doc.data().members[i]);
+                    }
+                }
+            });
+
+            let difference = allStudents.filter(x => !membersWithHalaqah.includes(x));
+            if (difference.length > 0) {
+                for (let k=0 ; k < difference.length ; k++) {
+                    newStudent.insertAdjacentHTML('beforeend', viewNewStudents(difference[k]));
+                }
+            } else {
+                const li = `
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Tiada pelajar baru. Semua pelajar telah didaftarkan pada kumpulan-kumpulan halaqah yang sedia ada. 
+                    </li>
+                `;
+                noNewStudent.innerHTML = li;
+                document.querySelector('#btnTmbhPelajar').disabled = true;
+            }
+        });
+    })
+
+});
+
+// edit halaqah name or admin
 document.querySelector('#editgp').addEventListener('click', editHalaqah);
 function editHalaqah(e) {
     e.preventDefault();
@@ -92,69 +122,37 @@ function editHalaqah(e) {
     })
 };
 
-// render all members that doesnt have halaqah yet
-const currentMembers = [];
-const newStudent = document.querySelector('#new-student');
-db.collection("TadabburGroup").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-        const members = doc.data().members;
-        // console.log('doc id: ' + doc.id);
-        // console.log('members length: ' + members.length);
-        if(members.length > 0) {
-            for(let i = 0; i < members.length; i++) {
-                currentMembers.push(doc.data().members[i]);
-                // console.log('currentMembers[]: ' + currentMembers);
-            }
-        }
-    });
-    if(currentMembers.length == 0) {
-        currentMembers.push("Tiada");
-    }
-    db.collection("students").where("fullname", "not-in", currentMembers).get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            const student = `
-            <li data-id2='${doc.data().fullname}' class="list-group-item d-flex justify-content-between align-items-center">
-                ${doc.data().fullname}
-                <div class="switch-button switch-button-xs">
-                    <input type="checkbox" name="${doc.data().fullname}" id="${doc.data().fullname}">
-                    <span><label for="${doc.data().fullname}"></label></span>
-                </div>
-            </li>
-            `;
-            newStudent.insertAdjacentHTML('beforeend', student);
+// remove selected current's member
+const removeBody = document.querySelector('#body-remove-modal');
+function removeMember(removeName) {
+    removeBody.innerHTML = "Adakah anda pasti mahu mengeluarkan " + removeName + " daripada halaqah ini?";
+    document.querySelector('.btn-delete2').addEventListener('click', () => {
+        const selectMember = db.collection("TadabburGroup").doc(gpID);
+        selectMember.update({
+            members: firebase.firestore.FieldValue.arrayRemove(removeName)
         });
+        setTimeout(function(){
+            document.location.reload();
+        }, 400);
     })
-});
+}
 
 // add members
+// const addStudDescription = document.querySelector('#addStudDes');
 function addMembers() {
-    db.collection("students").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            console.log(doc.id);
-            const name = doc.data().fullname;
-            console.log(name);
-            const cb = document.getElementById(name);
-                if(cb.checked = true) {   
-                    console.log(cb);
-                    const addStud = db.collection("TadabburGroup").doc(gpID);
-                    addStud.get().then((doc) => {
-                        const addGroup = doc.data().groupName;
-                        addStud.update({
-                            members: firebase.firestore.FieldValue.arrayUnion(cb.name)
-                        });
-                        let tr = document.querySelector(`[data-id2='${cb.name}']`);
-                        console.log('tr here: ' + tr);
-                        newStudent.removeChild(tr);
-    
-                        const li = `
-                            <li data-id1='${cb.name}' class="list-group-item d-flex justify-content-between align-items-center">
-                                ${cb.name}
-                                <button id="${cb.name}" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#removeMember" onclick="removeMember('${cb.name}', '${addGroup}')"><i class="far fa-trash-alt"></i></button>
-                            </li>
-                        `;
-                        memberList.insertAdjacentHTML('beforeend', li);
-                    })
-                }
-        });
-    });
+    let difference = allStudents.filter(x => !membersWithHalaqah.includes(x));
+    for (let k=0 ; k < difference.length ; k++) {
+        const name = difference[k];
+        const cb = document.getElementById(name);
+
+        if (cb.checked == true) {
+            const addStud = db.collection("TadabburGroup").doc(gpID);
+            addStud.update({
+                members: firebase.firestore.FieldValue.arrayUnion(cb.name)
+            });
+        }
+    }
+    setTimeout(function(){
+        document.location.reload();
+    }, 400);
 }

@@ -1,8 +1,28 @@
-const pcID = window.location.search.substring(1);
+const assID = window.location.search.substring(1);
+const clickSaveBtn = document.querySelector('#createAss');
+const addQues = document.querySelector('#addQues');
+const title = document.querySelector('#ass-title');
+const desc = document.querySelector('#ass-desc');
+
+db.collection("students").onSnapshot((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        db.collection("students").doc(doc.id).collection("assessment").onSnapshot((querySnapshot) => {
+            querySnapshot.forEach((doc2) => {
+                if (assID == doc2.id) {
+                    clickSaveBtn.disabled = true;
+                    addQues.disabled = true;
+                    title.disabled = true;
+                    desc.disabled = true;
+                    alert('Anda tidak dibenarkan untuk sunting ' + doc2.data().assessmentName + ' ini. Ini adalah kerana penilaian ini telah dibuat oleh para pelajar.');
+                }
+            });
+        });
+    });
+});
 
 // VIEW CURRENT TITLE AND DESCRIPTION
 const assessment = document.querySelector('.edit-practice .form');
-db.collection("Assessment").doc(pcID).onSnapshot((doc) => {
+db.collection("Assessment").doc(assID).onSnapshot((doc) => {
     assessment.title.value = doc.data().assessmentName;
     assessment.desc.value = doc.data().assessmentDesc;
 });
@@ -10,7 +30,7 @@ db.collection("Assessment").doc(pcID).onSnapshot((doc) => {
 // VIEW CURRENT QNA
 const qnaID = [];
 const viewQNA = document.querySelector('#viewQNA');
-db.collection("Assessment").doc(pcID).collection("Question").get().then((querySnapshot) => {
+db.collection("Assessment").doc(assID).collection("Question").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
 
         qnaID.push(doc.id);
@@ -30,8 +50,6 @@ db.collection("Assessment").doc(pcID).collection("Question").get().then((querySn
         // INSERT DATA OF QNA INTO THE FIELDS
         document.getElementById("ques" + doc.id).value = doc.data().question;
 
-        console.log('CURRENT QNA [qnaID]: ' + qnaID);
-
         // remove data-id of QNA from the array
         const btnDelete1 = document.querySelector(`[data-id='${doc.id}'] .btn-delete1`);
         btnDelete1.addEventListener('click', () => {
@@ -43,7 +61,6 @@ db.collection("Assessment").doc(pcID).collection("Question").get().then((querySn
 });
 
 // ADD NEW QNA
-const addQues = document.querySelector('#addQues');
 addQues.addEventListener('click', QnAform);
 function QnAform(e) {
     e.preventDefault();
@@ -77,12 +94,10 @@ function QnAform(e) {
 }
 
 // CLICK SAVE BUTTON
-document.querySelector('#createPc').addEventListener('click', updateAssessment);
+clickSaveBtn.addEventListener('click', updateAssessment);
 function validate() {
-    const title = document.querySelector('#pc-title').value;
-    const desc = document.querySelector('#pc-desc').value;
 
-    if (title != "" && desc != "") {
+    if (title.value != "" && desc.value != "") {
         if (qnaID.length == 0) {
             alert('Sila tambah soalan.');
             throw new Error('This is not an error. This is just to abort javascript');
@@ -112,10 +127,10 @@ function updateAssessment(e) {
     console.log('KALAU ADA KOSONG TAK BOLE LALU SINI');
     
     // DELETE REMOVED QNA
-    db.collection("Assessment").doc(pcID).collection("Question").get().then((querySnapshot) => {
+    db.collection("Assessment").doc(assID).collection("Question").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             if (! qnaID.includes(doc.id)) {
-                db.collection("Assessment").doc(pcID).collection("Question").doc(doc.id).delete().then(() => {
+                db.collection("Assessment").doc(assID).collection("Question").doc(doc.id).delete().then(() => {
                     console.log(doc.id + " successfully deleted!");
                 }).catch((error) => {
                     console.error("Error removing document: ", error);
@@ -124,15 +139,15 @@ function updateAssessment(e) {
         });
     });
 
-    db.collection("Assessment").doc(pcID).update({
-        assessmentName: document.querySelector('#pc-title').value,
-        assessmentDesc: document.querySelector('#pc-desc').value,
+    db.collection("Assessment").doc(assID).update({
+        assessmentName: title.value,
+        assessmentDesc: desc.value,
         date: firebase.firestore.FieldValue.serverTimestamp(),
     })
     .then(() => {
         // UPDATE EXISTING QNA
         for (let i = 0; i < qnaID.length ; i++) {
-            db.collection("Assessment").doc(pcID).collection("Question").doc(qnaID[i]).update({
+            db.collection("Assessment").doc(assID).collection("Question").doc(qnaID[i]).update({
                 question: document.querySelector('#ques' + qnaID[i]).value, 
             })
         }
@@ -140,7 +155,7 @@ function updateAssessment(e) {
     .then(() => {
         // ADD NEW QNA
         const comp = [];
-        db.collection("Assessment").doc(pcID).collection("Question").get().then((querySnapshot) => {
+        db.collection("Assessment").doc(assID).collection("Question").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 comp.push(doc.id);
             });
@@ -149,12 +164,8 @@ function updateAssessment(e) {
             console.log('COMPARE ------------ ' + comp);
             for (let n=0 ; n < qnaID.length ; n++) {
                 if (! comp.includes(qnaID[n])) {
-
-                    console.log('kat sini ----> current  : ' + qnaID);
-                    console.log('kat sini ----> qnaID[n] : ' + qnaID[n]);
-                    console.log('kat sini ----> comp     : ' + comp);
                     
-                    db.collection("Assessment").doc(pcID).collection("Question").add({
+                    db.collection("Assessment").doc(assID).collection("Question").add({
                         question: document.querySelector('#ques' + qnaID[n]).value, 
                     })
                     .catch((error) => {
