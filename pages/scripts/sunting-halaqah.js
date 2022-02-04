@@ -112,14 +112,23 @@ auth.onAuthStateChanged(() => {
 // edit halaqah name or admin
 document.querySelector('#editgp').addEventListener('click', editHalaqah);
 function editHalaqah(e) {
+
     e.preventDefault();
 
-    db.collection('TadabburGroup').doc(gpID).update({
-        groupName: halaqah.groupName.value,
-        admin: halaqah.admin.value,
-    }).then(() => {
-        alert('Data berjaya disunting.');
-    })
+    db.collection("instructors").where("fullname", "==", halaqah.admin.value).onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            db.collection('TadabburGroup').doc(gpID).update({
+                groupName: halaqah.groupName.value,
+                admin: halaqah.admin.value,
+                adminID: doc.id
+            }).then(() => {
+                alert('Data berjaya disunting.');
+                setTimeout(function(){
+                    document.location.reload();
+                }, 400);
+            })
+        });
+    });
 };
 
 // remove selected current's member
@@ -154,5 +163,5 @@ function addMembers() {
     }
     setTimeout(function(){
         document.location.reload();
-    }, 400);
+    }, 600);
 }

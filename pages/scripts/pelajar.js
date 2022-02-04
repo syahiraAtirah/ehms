@@ -25,12 +25,22 @@ const renderUser = doc => {
         console.log('id instructor: ' + doc.id);
         deleteBody.innerHTML = "Adakah anda pasti mahu membuang rekod kakitangan " + doc.data().fullname + " daripada database secara kekal?";
         btnDelete2.addEventListener('click', () => {
+
             db.collection('students').doc(`${doc.id}`).delete().then(() => {
                 console.log('Document of ' + doc.data().fullname + ' succesfully deleted from FIRESTORE!');
-                // setTimeout(function(){
-                //     document.location.reload();
-                // }, 1000);
-            }).catch(err => {
+            })
+            .then(() => {
+
+                db.collection("TadabburGroup").where("members", "array-contains", doc.data().fullname).get().then((querySnapshot) => {
+                    querySnapshot.forEach((doc2) => {
+                        console.log(doc2.id, " => ", doc2.data());
+                        db.collection("TadabburGroup").doc(doc2.id).update({
+                            members: firebase.firestore.FieldValue.arrayRemove(doc.data().fullname)
+                        });
+                    });
+                })
+            })
+            .catch(err => {
                 console.log('Error removing document', err);
             });
         });
@@ -110,35 +120,3 @@ function signup(e) {
     });   
 }
 
-
-// function uploadImage() {
-//     const ref = firebase.storage().ref();
-//     const file = document.querySelector('#select').files[0];
-//     const name = 'profileImage/' + file.name;
-//     const task = ref.child(name).put(file);
-
-//     task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
-//         console.log(url);
-//         const image = document.querySelector('#view-img');
-//         const link = document.querySelector('#view-imgLink');
-//         image.src = url;
-//         link.href = url;
-//         image.name = file.name;
-//     })      
-// }
-
-// function uploadImageEdit() {
-//     const ref = firebase.storage().ref();
-//     const file = document.querySelector('#select-editImg').files[0];
-//     const name = 'profileImage/' + file.name;
-//     const task = ref.child(name).put(file);
-
-//     task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
-//         console.log(url);
-//         const image = document.querySelector('#edit-img');
-//         const link = document.querySelector('#edit-imgLink');
-//         image.src = url;
-//         link.href = url;
-//         image.name = file.name;
-//     })      
-// }
