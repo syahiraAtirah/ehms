@@ -1,26 +1,32 @@
-const pcID = window.location.search.substring(1);
+const assID = window.location.search.substring(1);
 
 const assessment = document.querySelector('.view-practice .form');
 
-db.collection("Assessment").doc(pcID).onSnapshot((doc) => {
+db.collection("Assessment").doc(assID).onSnapshot((doc) => {
     assessment.title.value = doc.data().assessmentName;
     assessment.desc.value = doc.data().assessmentDesc;
 });
 
+function QNA (id, ques) {
+    const opt = `
+    <div data-id='${id}' class="alert alert-info fade show" role="alert">
+        <br>
+        <form>
+        <div class="form-group">
+            <textarea id="ques${id}" class="form-control" placeholder="${ques}" rows="2" disabled></textarea>
+        </div>
+        </form>
+    </div>
+    `;
+    
+    return opt; 
+}
+
 const viewQNA = document.querySelector('#viewQNA');
-db.collection("Assessment").doc(pcID).collection("Question").get().then((querySnapshot) => {
+
+db.collection("Assessment").doc(assID).collection("Question").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
 
-        const opt = `
-        <div data-id='${doc.id}' class="alert alert-info fade show" role="alert">
-            <br>
-            <form>
-            <div class="form-group">
-                <textarea id="ques${doc.id}" class="form-control" placeholder="${doc.data().question}" rows="2" disabled></textarea>
-            </div>
-            </form>
-        </div>
-        `;
-        viewQNA.insertAdjacentHTML('beforebegin', opt);    
+        viewQNA.insertAdjacentHTML('beforeend', QNA (doc.id, doc.data().question));    
     });
 });

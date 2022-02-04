@@ -110,138 +110,61 @@
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Latihan</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Penilaian</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Perkembangan Penilaian</li>
                                     </ol>
                                 </nav>
                             </div>
-                            <h1> Nanti add search by halaqah name, tajuk penilaian </h1>
                         </div>
                     </div>
                 </div>
                 <!-- end pageheader -->
+                
+                <!-- search bar -->
                 <div class="row">
-                    <!-- column for undone -->
-                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="col-xl-8 col-lg-4 col-md-6 col-sm-12 col-12" id="ass-searchbar">
+                        <input class="form-control" type="text" id="searchBar" oninput="Search((this.value).toLowerCase())" placeholder="Carian...">
+                        <br>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                        <a href="perkembangan-penilaian-semua.html" target="_blank" class="btn btn-info" id="btn-all">Keseluruhan Pelajar</a>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row" id="not-available">
+                    <!-- will be shown if the user has no halaqah yet -->
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" id="ass-header1">
                         <div class="card">
-                            <h5 class="card-header">Pelajar yang belum membuat penilaian</h5>
-                            <div class="card-body alert-danger">
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <medium class="mb-1">Penilaian 3</medium>
-                                            <medium class="text-secondary">0/50</medium>
-                                        </div>
-                                        <h4 class="text-primary font-margin">Wan Maimunah bin Ibrahim</h4>
-                                        <small class="text-muted">Kumpulan Masyeeta</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <medium class="mb-1">Penilaian 4</medium>
-                                            <medium class="text-secondary">0/50</medium>
-                                        </div>
-                                        <h4 class="text-primary font-margin">Wan Maimunah bin Ibrahim</h4>
-                                        <small class="text-muted">Kumpulan Masyeeta</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <medium class="mb-1">Penilaian 4</medium>
-                                            <medium class="text-secondary">0/50</medium>
-                                        </div>
-                                        <h4 class="text-primary font-margin">Zubaidah binit Hasan</h4>
-                                        <small class="text-muted">Kumpulan Sumayya</small>
-                                    </a>
+                            <h5 class="list-group-item list-group-item-primary text-center">Pelajar yang belum membuat penilaian</h5>
+                            <div>
+                                <div class="list-group" id="not-done">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" id="ass-header2">
+                        <div class="card">
+                            <h5 class="list-group-item list-group-item-danger text-center">Pelajar yang telah membuat penilaian</h5>
+                            <div>
+                                <div class="list-group" id="done">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" id="ass-header3">
+                        <div class="card">
+                            <h5 class="list-group-item list-group-item-success text-center">Pelajar yang telah dinilai</h5>
+                            <div>
+                                <div class="list-group" id="assessed">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- column for done -->
-                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">Pelajar yang telah membuat penilaian</h5>
-                            <div class="card-body alert-secondary">
-                                <div class="list-group">
-                                    <div class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <medium class="mb-1">Penilaian 2</medium>
-                                            <medium class="text-secondary">0/50</medium>
-                                        </div>
-                                        <h4 class="text-primary font-margin">Wan Maimunah bin Ibrahim</h4>
-                                        <small class="text-muted">Kumpulan Masyeeta</small>
-                                        <div class="assessed-btn">
-                                            <a href="#" class="btn btn-xs btn-outline-primary">Nilai</a>
-                                        </div>
-                                    </div>
-                                    <div class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <medium class="mb-1">Penilaian 2</medium>
-                                            <medium class="text-secondary">0/50</medium>
-                                        </div>
-                                        <h4 class="text-primary font-margin">Zubaidah binit Hasan</h4>
-                                        <small class="text-muted">Kumpulan Masyeeta</small>
-                                        <div class="assessed-btn">
-                                            <a href="#" class="btn btn-xs btn-outline-primary">Nilai</a>
-                                        </div>
-                                    </div>
-                                    <div class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <medium class="mb-1">Penilaian 3</medium>
-                                            <medium class="text-secondary">0/50</medium>
-                                        </div>
-                                        <h4 class="text-primary font-margin">Siti Aisyah binti Zainal</h4>
-                                        <small class="text-muted">Kumpulan Masyeeta</small>
-                                        <div class="assessed-btn">
-                                            <a href="#" class="btn btn-xs btn-outline-primary">Nilai</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- column for assessed -->
-                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">Pelajar yang telah dinilai</h5>
-                            <div class="card-body alert-primary">
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <medium class="mb-1">Penilaian 1</medium>
-                                            <medium class="text-secondary">45/50</medium>
-                                        </div>
-                                        <h4 class="text-primary font-margin">Wan Maimunah bin Ibrahim</h4>
-                                        <small class="text-muted">Kumpulan Masyeeta</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <medium class="mb-1">Penilaian 1</medium>
-                                            <medium class="text-secondary">43/50</medium>
-                                        </div>
-                                        <h4 class="text-primary font-margin">Zubaidah binit Hasan</h4>
-                                        <small class="text-muted">Kumpulan Masyeeta</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <medium class="mb-1">Penilaian 1</medium>
-                                            <medium class="text-secondary">37/50</medium>
-                                        </div>
-                                        <h4 class="text-primary font-margin">Siti Aisyah binti Zainal</h4>
-                                        <small class="text-muted">Kumpulan Sumayya</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <medium class="mb-1">Penilaian 2</medium>
-                                            <medium class="text-secondary">47/50</medium>
-                                        </div>
-                                        <h4 class="text-primary font-margin">Siti Aisyah binti Zainal</h4>
-                                        <small class="text-muted">Kumpulan Sumayya</small>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -262,6 +185,7 @@
 
     <script src="../pages/scripts/init.js"></script>
     <script src="../pages/scripts/auth.js"></script>
+    <script src="../pages/scripts/perkembangan-penilaian.js"></script>
 </body>
  
 </html>

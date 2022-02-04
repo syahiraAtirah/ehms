@@ -32,22 +32,38 @@ const renderAssessment = doc => {
         btnDelete2.addEventListener('click', () => {
             db.collection('Assessment').doc(doc.data().assessmentID).collection('Question').get().then((querySnapshot) => {
                 querySnapshot.forEach((docu) => {
-
                     db.collection('Assessment').doc(doc.data().assessmentID).collection('Question').doc(docu.id).delete().then(() => {
-                        console.log('------------ Document succesfully deleted from FIRESTORE! : ' + docu.id + " in " + doc.data().assessmentID + "--------------------");
-                        // setTimeout(function(){
-                        //     document.location.reload();
-                        // }, 1000);
+                        console.log('success delete all the Question under this assessment');
                     })
                 });
             })
             .then(() => {
                 db.collection('Assessment').doc(doc.data().assessmentID).delete().then(() => {
-                    console.log('------------ Document succesfully deleted from FIRESTORE! : ' + doc.data().assessmentID );
-                    // setTimeout(function(){
-                    //     document.location.reload();
-                    // }, 1000);
+                    console.log('success delete the doc of this assessment');
                 })
+            })  
+            .then(() => {
+                db.collection("students").get().then((querySnapshot) => {
+                    querySnapshot.forEach((doc1) => {
+                        const studID = doc1.id;
+                        console.log(studID);
+                        const assessmentID = doc.data().assessmentID;
+                        console.log(assessmentID);
+
+                        db.collection('students').doc(studID).collection('practices').get().then(doc3 => { 
+                            if (doc3.docs.length > 0) {
+        
+                                db.collection("students").doc(studID).collection('assessment').where("assessmentID", "==", assessmentID).get().then((querySnapshot) => {
+                                    querySnapshot.forEach((doc2) => {
+                                        db.collection("students").doc(studID).collection('assessment').doc(doc2.id).delete().then(() => {
+                                            console.log('success delete the doc of this assessment under Students DB');
+                                        })
+                                    });
+                                })
+                            }
+                        })
+                    });
+                });
             })  
             .catch(err => {
                 console.log('Error removing document', err);

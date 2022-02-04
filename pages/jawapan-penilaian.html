@@ -6,13 +6,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>E-Halaqah - Sunting Latihan </title>
+    <title>E-Halaqah - Jawapan Penilaian</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/libs/css/style.css">
     <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
 </head>
 
 <body>
@@ -58,7 +57,7 @@
                                     <ul class="nav flex-column">
                                         <li class="nav-item"><a class="nav-link" href="koleksi.-latihan.html">Koleksi Latihan</a></li>
                                         <li class="nav-item"><a class="nav-link" href="perkembangan-latihan.html">Perkembangan Latihan</a></li>
-                                        <li class="nav-item"><a class="nav-link nav-lead active" href="urus-latihan.html">Urus Latihan</a></li>
+                                        <li class="nav-item"><a class="nav-link nav-lead" href="urus-latihan.html">Urus Latihan</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -67,7 +66,7 @@
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item"><a class="nav-link" href="koleksi-penilaian.html">Koleksi Penilaian</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="perkembangan-penilaian.html">Perkembangan Penilaian</a></li>
+                                        <li class="nav-item"><a class="nav-link active" href="perkembangan-penilaian.html">Perkembangan Penilaian</a></li>
                                         <li class="nav-item"><a class="nav-link nav-lead" href="urus-penilaian.html">Urus Penilaian</a></li>                       
                                     </ul>
                                 </div>
@@ -104,52 +103,36 @@
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
                 <!-- pageheader -->
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="page-header">
-                            <h2 class="pageheader-title">Sunting Latihan</h2>
-                            <div class="page-breadcrumb">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Latihan</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Urus Latihan</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Sunting Latihan</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end pageheader -->
-
-                <!-- view practice -->
+                
+                <!-- view assessment's answer -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         
-                        <div class="card edit-practice">
+                        <div class="card view-ass">
                             <div class="card-body">
                                 <form class="form">
                                     <div class="form-group">
-                                        <label for="pc-title" class="col-form-label">Tajuk Latihan</label>
-                                        <input id="pc-title" name="title" type="text" class="form-control">
+                                        <label for="ass-title" class="col-form-label">Tajuk Penilaian</label>
+                                        <input id="ass-title" name="title" type="text" class="form-control" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="pc-desc">Penerangan</label>
-                                        <textarea class="form-control" name="desc" id="pc-desc" rows="3"></textarea>
+                                        <label for="ass-desc">Penerangan</label>
+                                        <textarea class="form-control" name="desc" id="ass-desc" rows="3" disabled></textarea>
                                     </div>
-                                    <div id="viewQNA"></div>
-                                    <hr>
-                                    <button id="addQues" class="btn btn-info">Tambah Soalan</button>
-                                    <hr>
-                                    <button id="createPc" class="btn btn-secondary btn-validate">Simpan</button>
+                                    <div id="viewQNA">
+                                        <label for="pc-desc">Soalan dan Jawapan:-</label>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
+                <!-- end pageheader -->
+                
+                
 
+            </div>
         </div>
         <!-- end main wrapper -->
     </div>
@@ -168,8 +151,7 @@
 
     <script src="../pages/scripts/init.js"></script>
     <script src="../pages/scripts/auth.js"></script>
-    <script src="../pages/scripts/sunting-latihan.js"></script>
-
+    <script src="../pages/scripts/jawapan-penilaian.js"></script>
 </body>
  
 </html>

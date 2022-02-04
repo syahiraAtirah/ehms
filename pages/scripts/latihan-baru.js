@@ -154,11 +154,11 @@ function createPractice(e) {
                         }
                     } 
                 })
-                // SUCCESS
-                console.log('PRACTICE CREATED SUCCESSFULLY');
-                alert('Alhamdulillah. Latihan telah berjaya dicipta.');
-                setTimeout(function(){ window.location.href = "urus-latihan.html"; }, 4000); 
             }
+            // SUCCESS
+            console.log('PRACTICE CREATED SUCCESSFULLY');
+            alert('Alhamdulillah. Latihan telah berjaya dicipta.');
+            setTimeout(function(){ window.location.href = "urus-latihan.html"; }, 4000); 
         })
     })
     .catch((error) => {

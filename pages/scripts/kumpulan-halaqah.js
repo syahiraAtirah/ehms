@@ -24,13 +24,18 @@ const renderHalaqah = doc => {
                             </div>
                             <div id="${doc.id}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                 <div class="card-body">
-                                    <ul>`;
+                                <ul>`;
 
+                                if (doc.data().members.length > 0) {
                                     for (let m=0 ; m < doc.data().members.length ; m++) {
                                         div += `<li class="no-member"> ${doc.data().members[m]}</li>`;
                                     }
-                                        div += `
-                                    </ul>
+                                } else {
+                                    div += `<li class="no-member">Belum mempunyai pelajar</li>`;
+                                }
+
+                                div += `
+                            </ul>
                                 </div>
                             </div>
                         </div>
