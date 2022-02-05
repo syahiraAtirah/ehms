@@ -127,27 +127,23 @@ auth.onAuthStateChanged((user) => {
                 
                 console.log("You own no halaqah group yet.");
                 db.collection("TadabburGroup").where("adminID", "!=", user.uid).get().then((querySnapshot) => {
-                    querySnapshot.forEach((doc12) => {
-                        
-                        if (doc12.data().adminID != user.uid) {
-                            const pracHeader1 = document.getElementById("practice-header1");
-                            pracHeader1.style.display = "none";
-                            const pracHeader2 = document.getElementById("practice-header2");
-                            pracHeader2.style.display = "none";
-                            const pracHeader3 = document.getElementById("practice-searchbar");
-                            pracHeader3.style.display = "none";
-                
-                            const notAvailable = document.getElementById("not-available");
-                            const zero = `
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="card">
-                                    <p class="list-group-item list-group-item-danger text-center">Maaf, anda belum mempunyai halaqah. Sila semak dari semasa ke semasa. Admin akan memberikan anda halaqah dalam masa yang terdekat.</p>
-                                </div>
-                            </div>
-                            `;
-                            notAvailable.insertAdjacentHTML('beforeend', zero);
-                        }
-                    })
+                    querySnapshot.forEach(() => { })
+                    const pracHeader1 = document.getElementById("practice-header1");
+                    pracHeader1.style.display = "none";
+                    const pracHeader2 = document.getElementById("practice-header2");
+                    pracHeader2.style.display = "none";
+                    const pracHeader3 = document.getElementById("practice-searchbar");
+                    pracHeader3.style.display = "none";
+        
+                    const notAvailable = document.getElementById("not-available");
+                    const zero = `
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <p class="list-group-item list-group-item-danger text-center">Maaf, anda belum mempunyai halaqah. Sila semak dari semasa ke semasa. Admin akan memberikan anda halaqah dalam masa yang terdekat.</p>
+                        </div>
+                    </div>
+                    `;
+                    notAvailable.insertAdjacentHTML('beforeend', zero);
                 })
             }
         } else {

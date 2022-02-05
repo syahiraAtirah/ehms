@@ -1,6 +1,6 @@
 const assessmentList = document.querySelector('#assessment-list');
 const renderAssessment = doc => {
-    // const date = doc.data().date.toDate().toDateString() + ", " + doc.data().date.toDate().toLocaleTimeString();
+    const date = doc.data().date.toDate().toDateString() + ", " + doc.data().date.toDate().toLocaleTimeString();
     const div = `
     <div data-id='${doc.data().assessmentID}' class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
         <div class="card">
@@ -9,7 +9,7 @@ const renderAssessment = doc => {
             </div>
             <div class="card-body">
                 <p class="card-text">${doc.data().assessmentDesc}</p>
-                <p class="card-text"><small class="text-muted">Tarikh dikemaskini: ${doc.data().date}</small></p>
+                <p class="card-text"><small class="text-muted">Tarikh dikemaskini: ${date}</small></p>
             </div>
         </div>
     </div>
