@@ -16,7 +16,7 @@ function QNA (id, ques, url) {
     <div data-id='${id}' class="alert alert-info fade show" role="alert">
         <form>
             <div class="form-group">
-                <textarea id="ques${id}" class="form-control" placeholder="${ques}" rows="1" disabled></textarea>
+                <textarea id="ques${id}" class="form-control" placeholder="${ques}" rows="2" disabled></textarea>
                 <br>
                 <audio controls> 
                     <source src="${url}" type="audio/x-wav"> 
