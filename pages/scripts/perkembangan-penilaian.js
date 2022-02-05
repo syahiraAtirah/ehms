@@ -126,28 +126,25 @@ auth.onAuthStateChanged(user => {
         else {      
             console.log("You own no halaqah group yet.");
             db.collection("TadabburGroup").where("adminID", "!=", user.uid).get().then((querySnapshot) => {
-                querySnapshot.forEach((doc12) => {
-                    if (doc12.data().adminID != user.uid) {
-                        const assHeader1 = document.getElementById("ass-header1");
-                        assHeader1.style.display = "none";
-                        const assHeader2 = document.getElementById("ass-header2");
-                        assHeader2.style.display = "none";
-                        const assHeader3 = document.getElementById("ass-header3");
-                        assHeader3.style.display = "none";
-                        const assHeader4 = document.getElementById("ass-searchbar");
-                        assHeader4.style.display = "none";
-            
-                        const notAvailable = document.getElementById("not-available");
-                        const zero = `
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="card">
-                                <p class="list-group-item list-group-item-danger text-center">Maaf, anda belum mempunyai halaqah. Sila semak dari semasa ke semasa. Admin akan memberikan anda halaqah dalam masa yang terdekat.</p>
-                            </div>
+                querySnapshot.forEach(() => { })
+                    const assHeader1 = document.getElementById("ass-header1");
+                    assHeader1.style.display = "none";
+                    const assHeader2 = document.getElementById("ass-header2");
+                    assHeader2.style.display = "none";
+                    const assHeader3 = document.getElementById("ass-header3");
+                    assHeader3.style.display = "none";
+                    const assHeader4 = document.getElementById("ass-searchbar");
+                    assHeader4.style.display = "none";
+        
+                    const notAvailable = document.getElementById("not-available");
+                    const zero = `
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <p class="list-group-item list-group-item-danger text-center">Maaf, anda belum mempunyai halaqah. Sila semak dari semasa ke semasa. Admin akan memberikan anda halaqah dalam masa yang terdekat.</p>
                         </div>
-                        `;
-                        notAvailable.insertAdjacentHTML('beforeend', zero);
-                    }
-                })
+                    </div>
+                    `;
+                    notAvailable.insertAdjacentHTML('beforeend', zero);
             })
         }
     });

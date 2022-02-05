@@ -1,38 +1,36 @@
-
 // state changes
 auth.onAuthStateChanged(user => {
-    if (user) {
-        const userDB = db.collection("instructors").doc(user.uid);
-        userDB.get().then((doc) => {
-            const userImg = document.querySelector('#img-user');
-            userImg.src = doc.data().imageUrl;
-
-            // access level
-            const role = doc.data().role;
-            console.log('PERANAN: ' + role);
-
-            var admin = document.getElementsByClassName("nav-admin");
-            var lead = document.getElementsByClassName("nav-lead");
-            
-            if (role == "Ketua Pengajar") { 
-              for (let i=0 ; i < admin.length ; i++) {
-                admin[i].style.display = "none";
-              }
-            } 
-            if (role == "Pengajar") { 
-              for (let i=0 ; i < lead.length ; i++) {
-                lead[i].style.display = "none";
-              }
-              for (let i=0 ; i < admin.length ; i++) {
-                admin[i].style.display = "none";
-              }
-            } 
-        });
-        document.querySelector('#currentuser').innerHTML = user.email;
-        console.log('Signed in as ', user.email);
-    } else {
-        window.location.href = "../index.html"; 
-    }
+  if (user) {
+    db.collection("instructors").doc(user.uid).onSnapshot((doc) => {
+      const userImg = document.querySelector('#img-user');
+      userImg.src = doc.data().imageUrl;
+    
+      // access level
+      const role = doc.data().role;
+      console.log('PERANAN: ' + role);
+    
+      var admin = document.getElementsByClassName("nav-admin");
+      var lead = document.getElementsByClassName("nav-lead");
+      
+      if (role == "Ketua Pengajar") { 
+        for (let i=0 ; i < admin.length ; i++) {
+          admin[i].style.display = "none";
+        }
+      } 
+      if (role == "Pengajar") { 
+        for (let i=0 ; i < lead.length ; i++) {
+          lead[i].style.display = "none";
+        }
+        for (let i=0 ; i < admin.length ; i++) {
+          admin[i].style.display = "none";
+        }
+      } 
+    });
+    document.querySelector('#currentuser').innerHTML = user.email;
+    console.log('Signed in as ', user.email);
+  } else {
+      window.location.href = "../index.html"; 
+  }
 });
 
 // logout
