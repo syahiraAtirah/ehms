@@ -56,21 +56,18 @@ const noNewStudent = document.querySelector('#noNewStud');
 auth.onAuthStateChanged(() => {
 
     db.collection("TadabburGroup").doc(gpID).onSnapshot((doc) => {
+        // display halaqah name and it's admin
         halaqah.groupName.value = doc.data().groupName;
         halaqah.admin.value = doc.data().admin;
     
+        // display current members in that halaqah
         const members = doc.data().members;
         if(members.length > 0) { 
             for(let i = 0; i < members.length; i++){
                 memberList.insertAdjacentHTML('beforeend', viewMemberList(members[i]));
             }
-            
         } else {
-            const li = `
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Belum mempunyai pelajar 
-                </li>
-            `;
+            const li = `<li class="list-group-item d-flex justify-content-between align-items-center"> Belum mempunyai pelajar </li>`;
             noStudentYet.innerHTML = li;
         }
     });
@@ -90,6 +87,7 @@ auth.onAuthStateChanged(() => {
                 }
             });
 
+            // display students that have no halaqah yet
             let difference = allStudents.filter(x => !membersWithHalaqah.includes(x));
             if (difference.length > 0) {
                 for (let k=0 ; k < difference.length ; k++) {
@@ -106,7 +104,6 @@ auth.onAuthStateChanged(() => {
             }
         });
     })
-
 });
 
 // edit halaqah name or admin
