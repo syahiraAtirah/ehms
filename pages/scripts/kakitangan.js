@@ -19,25 +19,19 @@ const renderUser = doc => {
     `;
     instructorList.insertAdjacentHTML('beforeend', tr);
 
-    // delete user (tapi tak auto close modal after click submit)
+    // delete user 
     const btnDelete1 = document.querySelector(`[data-id='${doc.id}'] .btn-delete1`);
     const btnDelete2 = document.querySelector('.btn-delete2');
     btnDelete1.addEventListener('click', () => {
-        console.log('id instructor: ' + doc.id);
         deleteBody.innerHTML = "Adakah anda pasti mahu membuang rekod kakitangan " + doc.data().fullname + " daripada database secara kekal?";
         btnDelete2.addEventListener('click', () => {
-            db.collection('instructors').doc(`${doc.id}`).delete().then(() => {
+            db.collection('instructors').doc(doc.id).delete().then(() => {
                 console.log('Document of ' + doc.data().fullname + ' succesfully deleted from FIRESTORE!');
-                // setTimeout(function(){
-                //     document.location.reload();
-                // }, 1000);
             }).catch(err => {
                 console.log('Error removing document', err);
             });
         });
     });
-
-
 };
 
 
@@ -103,9 +97,7 @@ function signup(e) {
             });
             console.log("User's data of " + email + " added to firestore!");
             signupForm.reset();
-            // FIND OUT LATER HOW TO CLOSE THE MODAL ONCE SUBMIT THE FORM
         })
-        
     })
     .catch((error) => {
         console.log(error.message);
@@ -113,34 +105,3 @@ function signup(e) {
 }
 
 
-// function uploadImage() {
-//     const ref = firebase.storage().ref();
-//     const file = document.querySelector('#select').files[0];
-//     const name = 'profileImage/' + file.name;
-//     const task = ref.child(name).put(file);
-
-//     task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
-//         console.log(url);
-//         const image = document.querySelector('#view-img');
-//         const link = document.querySelector('#view-imgLink');
-//         image.src = url;
-//         link.href = url;
-//         image.name = file.name;
-//     })      
-// }
-
-// function uploadImageEdit() {
-//     const ref = firebase.storage().ref();
-//     const file = document.querySelector('#select-editImg').files[0];
-//     const name = 'profileImage/' + file.name;
-//     const task = ref.child(name).put(file);
-
-//     task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
-//         console.log(url);
-//         const image = document.querySelector('#edit-img');
-//         const link = document.querySelector('#edit-imgLink');
-//         image.src = url;
-//         link.href = url;
-//         image.name = file.name;
-//     })      
-// }
